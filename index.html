@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adnan Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo"> <span class="highlight">Adnan</span> Portfolio</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contacts</a></li>
+                <button id="theme-toggle-button">Mode</button>
+            </ul>
+        </nav>
+    </header>
+    <section id="home">
+        <h1>Code, Create, <span  id="changing-word" class="highlight">Capture</span></h1>
+
+        <p>A passionate web developer and BSCS student, blending C#, HTML, CSS, and JavaScript with a creative eye
+            for photography—building digital experiences while capturing real moments.</p>
+            <a href="#contact" class="hire-me-btn">
+                <span class="btn-content">
+                    Hire Me <i class="fas fa-arrow-right"></i>
+                </span>
+                <span class="btn-hover"></span>
+            </a>
+            
+        
+        <img src="assets/images/about.png" alt="Adnan's Photo" class="profile-photo">
+    </section>
+      <section id="projects">
+        <div class="section-header">
+            <h2>My <span class="highlight">Projects</span></h2>
+            <p class="section-description">Explore my latest work and creative solutions</p>
+        </div>
+
+        <div class="projects-container">
+            <!-- Wayns Lamps Project -->
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>Wayns Lamps</h3>
+                    <p>A modern e-commerce website for premium lighting solutions with responsive design and seamless user experience.</p>
+                    <div class="tech-stack">
+                        <span>Node.js</span>
+                        <span>Express.js</span>
+                        <span>MongoDB</span>
+                        <span>HTML</span>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+                <div class="project-showcase">
+                    <div class="slider-container">
+                        <div class="slider-progress">
+                            <div class="progress-bar" id="wayns-progress"></div>
+                        </div>
+                        <button class="prev" onclick="slideImages('wayns-slider', -1)">&#10094;</button>
+                        <div class="slider" id="wayns-slider">
+                            <img src="assets/images/Lampweb.png" alt="Wayns Lamps Project Screenshot 1" class="slide active">
+                            <img src="assets/images/Lampweb1.png" alt="Wayns Lamps Project Screenshot 2" class="slide">
+                            <img src="assets/images/Lampweb2.png" alt="Wayns Lamps Project Screenshot 3" class="slide">
+                            <img src="assets/images/Lampweb3.png" alt="Wayns Lamps Project Screenshot 4" class="slide">
+                            <img src="assets/images/Lampweb4.png" alt="Wayns Lamps Project Screenshot 5" class="slide">
+                        </div>
+                        <button class="next" onclick="slideImages('wayns-slider', 1)">&#10095;</button>
+                        <div class="slider-dots" id="wayns-dots">
+                            <span class="dot active" onclick="currentSlide('wayns-slider', 0)"></span>
+                            <span class="dot" onclick="currentSlide('wayns-slider', 1)"></span>
+                            <span class="dot" onclick="currentSlide('wayns-slider', 2)"></span>
+                            <span class="dot" onclick="currentSlide('wayns-slider', 3)"></span>
+                            <span class="dot" onclick="currentSlide('wayns-slider', 4)"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>Farm To Home</h3>
+                    <p>Online platform to connect local farmers with consumers for fresh produce delivery.</p>
+                    <div class="tech-stack">
+                        <span>.Net</span>
+                        <span>C#</span>
+                        <span>JavaScript</span>
+                        <span>MYSQL</span>
+                    </div>
+                </div>
+                <div class="project-showcase">
+                    <div class="slider-container">
+                        <div class="slider-progress">
+                            <div class="progress-bar" id="rolex-progress"></div>
+                        </div>
+                        <button class="prev" onclick="slideImages('rolex-slider', -1)">&#10094;</button>
+                        <div class="slider" id="rolex-slider">
+                            <img src="assets/images/farmtohome.png" alt="farmtohome Project Screenshot 1" class="slide active">
+                            <img src="assets/images/farmtohome1.png" alt="farmtohome Project Screenshot 2" class="slide">
+                           
+                        </div>
+                        <button class="next" onclick="slideImages('rolex-slider', 1)">&#10095;</button>
+                        <div class="slider-dots" id="rolex-dots">
+                            <span class="dot active" onclick="currentSlide('rolex-slider', 0)"></span>
+                            <span class="dot" onclick="currentSlide('rolex-slider', 1)"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="about">
+        <div class="section-header">
+            <h2>About <span class="highlight">Me</span></h2>
+            <p class="section-description">Get to know more about my skills and background</p>
+        </div>
+        
+        <div class="about-container">
+            <div class="about-image-container">
+                <div class="about-image-wrapper">
+                    <img src="assets/images/about.png" alt="Adnan's Photo" class="about-image">
+                    <div class="experience-badge">
+                        <span class="exp-number">2+</span>
+                        <span class="exp-text">Years<br>Experience</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-bio">
+                    <h3>Web Developer & BSCS Student</h3>
+                    <p>I am a passionate web developer and BSCS(final-year) student with a strong foundation in modern web technologies. I love crafting dynamic websites and applications while continuously exploring new technologies to expand my skill set.</p>
+                    <p>Beyond coding, I have a keen eye for photography, capturing moments that tell a story. My technical knowledge combined with creative vision allows me to build engaging digital experiences.</p>
+                    
+                    <div class="personal-info">
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-user-graduate"></i> Education:</span>
+                            <span class="info-value">Bachelor of Science in Computer Science</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-map-marker-alt"></i> Location:</span>
+                            <span class="info-value">Pakistan</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-language"></i> Languages:</span>
+                            <span class="info-value">English, Urdu</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label"><i class="fas fa-envelope"></i> Email:</span>
+                            <span class="info-value">madnanhz42@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skills-container">
+                    <h3>My Skills</h3>
+                    
+                    <div class="skill-groups">
+                        <div class="skill-category">
+                            <h4>Programming</h4>
+                            <div class="skills">
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span>C#</span>
+                                        <span>70%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span>JavaScript</span>
+                                        <span>80%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span>Python</span>
+                                        <span>70%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 70%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>Web Development</h4>
+                            <div class="skills">
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span>HTML/CSS</span>
+                                        <span>90%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span>Responsive Design</span>
+                                        <span>85%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span>Web APIs</span>
+                                        <span>75%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-cta">
+                    <a href="#contact" class="cta-button">
+                        <span>Contact Me</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#" class="cta-button secondary">
+                        <span>Download CV</span>
+                        <i class="fas fa-download"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="social-connect">
+            <h3>Connect With Me</h3>
+            <div class="social-icons">
+                <a href="https://wa.me/923440712340" class="social-icon" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://www.instagram.com/zypher_he" class="social-icon" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-icon" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="social-icon" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="social-icon" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+  
+
+    <section id="contact">
+        <div class="section-header">
+            <h2>Get In <span class="highlight">Touch</span></h2>
+            <p class="section-description">Have a project in mind or want to collaborate? Let's talk!</p>
+        </div>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="icon-container">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Location</h3>
+                        <p>Pakistan</p>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="icon-container">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Email</h3>
+                        <p>madnanhz42@gmail.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="icon-container">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Phone</h3>
+                        <p>+923261707830</p>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://wa.me/923440712340" class="social-icon" aria-label="WhatsApp"  target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://www.instagram.com/zypher_he" class="social-icon" aria-label="Instagram" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://github.com/Adnan-ZY" class="social-icon" aria-label="LinkedIn" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/Adnan-ZY" class="social-icon" aria-label="GitHub" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="contact-form-container">
+                <form id="contact-form" onsubmit="return validateForm()">
+                    <div class="form-header">
+                        <h3>Send Me a Message</h3>
+                    </div>
+                    
+                    <div id="error" class="error-message"></div>
+                    
+                    <div class="input-group">
+                        <div class="input-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="input-field">
+                            <input type="text" id="name" name="name" required>
+                            <label for="name">Your Name</label>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <div class="input-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="input-field">
+                            <input type="email" id="email" name="email" required>
+                            <label for="email">Your Email</label>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <div class="input-icon">
+                            <i class="fas fa-pen"></i>
+                        </div>
+                        <div class="input-field">
+                            <textarea id="message" name="message" required></textarea>
+                            <label for="message">Your Message</label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" id="c-btn">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        This Website belongs to Muhammad Adnan (FA21-BCS-037). All rights reserved.&copy; 2025
+    </footer>
+
+    <script>
+        const toggleButton = document.getElementById('theme-toggle-button');
+        const body = document.body;
+
+        toggleButton.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+        });
+        
+        function validateForm() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var message = document.getElementById('message').value;
+            var error = document.getElementById('error');
+            var text = "";
+
+            error.style.padding = "10px";
+
+            if (name.length < 5) {
+                text = "Please enter a valid name (at least 5 characters).";
+                error.innerHTML = text;
+                showErrorAnimation();
+                return false;
+            }
+
+            if (email.indexOf("@") == -1 || email.length < 6) {
+                text = "Please enter a valid email.";
+                error.innerHTML = text;
+                showErrorAnimation();
+                return false;
+            }
+
+            if (message.length <= 140) {
+                text = "Please enter more than 140 characters in the message.";
+                error.innerHTML = text;
+                showErrorAnimation();
+                return false;
+            }
+
+            // Show success message
+            error.style.backgroundColor = "rgba(46, 204, 113, 0.2)";
+            error.style.color = "#2ecc71";
+            error.innerHTML = "Message sent successfully!";
+            
+            // Reset form after 2 seconds
+            setTimeout(() => {
+                document.getElementById('contact-form').reset();
+                error.innerHTML = "";
+                error.style.padding = "0";
+                error.style.backgroundColor = "transparent";
+            }, 2000);
+            
+            return false; // Prevent actual form submission for demo
+        }
+        
+        function showErrorAnimation() {
+            const form = document.getElementById('contact-form');
+            form.classList.add('shake');
+            setTimeout(() => {
+                form.classList.remove('shake');
+            }, 500);
+        }
+        
+        function slideImages(sliderId, direction) {
+            let slider = document.getElementById(sliderId);
+            let slides = slider.getElementsByClassName("slide");
+            let dots = document.getElementById(sliderId.replace('slider', 'dots')).getElementsByClassName("dot");
+            let progressBar = document.getElementById(sliderId.replace('slider', 'progress'));
+            
+            let activeIndex = Array.from(slides).findIndex(slide => slide.classList.contains("active"));
+            
+            slides[activeIndex].classList.remove("active");
+            dots[activeIndex].classList.remove("active");
+            
+            let nextIndex = (activeIndex + direction + slides.length) % slides.length;
+            slides[nextIndex].classList.add("active");
+            dots[nextIndex].classList.add("active");
+            
+            // Update progress bar
+            let progress = ((nextIndex + 1) / slides.length) * 100;
+            progressBar.style.width = progress + "%";
+        }
+        
+        function currentSlide(sliderId, index) {
+            let slider = document.getElementById(sliderId);
+            let slides = slider.getElementsByClassName("slide");
+            let dots = document.getElementById(sliderId.replace('slider', 'dots')).getElementsByClassName("dot");
+            let progressBar = document.getElementById(sliderId.replace('slider', 'progress'));
+            
+            // Remove active class from all slides and dots
+            Array.from(slides).forEach(slide => slide.classList.remove("active"));
+            Array.from(dots).forEach(dot => dot.classList.remove("active"));
+            
+            // Add active class to selected slide and dot
+            slides[index].classList.add("active");
+            dots[index].classList.add("active");
+            
+            // Update progress bar
+            let progress = ((index + 1) / slides.length) * 100;
+            progressBar.style.width = progress + "%";
+        }
+        
+        document.addEventListener("DOMContentLoaded", function () {
+            let navLinks = document.querySelectorAll("nav a");
+
+            navLinks.forEach(link => {
+                link.addEventListener("click", function () {
+                    navLinks.forEach(nav => nav.classList.remove("active"));
+                    this.classList.add("active");
+                });
+            });
+            
+            // Initialize progress bars
+            document.getElementById('wayns-progress').style.width = (1 / document.getElementById('wayns-slider').getElementsByClassName("slide").length) * 100 + "%";
+            document.getElementById('rolex-progress').style.width = (1 / document.getElementById('rolex-slider').getElementsByClassName("slide").length) * 100 + "%";
+            
+            // Add focus and blur event listeners for form fields
+            const formInputs = document.querySelectorAll('#contact-form input, #contact-form textarea');
+            
+            formInputs.forEach(input => {
+                // Check if there's a value on load
+                if (input.value.trim() !== '') {
+                    input.classList.add('has-value');
+                }
+                
+                // Add event listeners
+                input.addEventListener('focus', function() {
+                    this.parentElement.classList.add('focused');
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.parentElement.classList.remove('focused');
+                    if (this.value.trim() !== '') {
+                        this.classList.add('has-value');
+                    } else {
+                        this.classList.remove('has-value');
+                    }
+                });
+            });
+            
+            // Animate skill bars on scroll
+            const skillBars = document.querySelectorAll('.skill-progress');
+            
+            function checkScroll() {
+                skillBars.forEach(bar => {
+                    const sectionPos = document.getElementById('about').getBoundingClientRect();
+                    if(sectionPos.top < window.innerHeight && sectionPos.bottom >= 0) {
+                        bar.style.width = bar.parentElement.getAttribute('data-width');
+                    }
+                });
+            }
+            
+            // Set initial width to 0
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.parentElement.setAttribute('data-width', width);
+                bar.style.width = '0';
+            });
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkScroll);
+            
+            // Check on load
+            setTimeout(checkScroll, 500);
+        });
+        const words = ["Capture", "Innovate", "Inspire", "Design", "Build"];
+const changingWord = document.getElementById("changing-word");
+
+let wordIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+function typeEffect() {
+    const currentWord = words[wordIndex];
+    const currentText = currentWord.substring(0, charIndex);
+
+    changingWord.textContent = currentText;
+
+    if (!isDeleting && charIndex < currentWord.length) {
+        charIndex++;
+        setTimeout(typeEffect, 150);
+    } else if (isDeleting && charIndex > 0) {
+        charIndex--;
+        setTimeout(typeEffect, 100);
+    } else {
+        isDeleting = !isDeleting;
+        if (!isDeleting) {
+            wordIndex = (wordIndex + 1) % words.length;
+        }
+        setTimeout(typeEffect, 1000);
+    }
+}
+
+typeEffect();
+
+    </script>
+</body>
+</html>
