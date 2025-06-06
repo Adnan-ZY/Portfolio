@@ -117,15 +117,15 @@ ul {
     vertical-align: top;
     margin-top: -22rem;
 
-    /* Smooth fade-in animation */
+    
     animation: fadeIn 2s ease-in-out;
 
-    /* Live animated gradient */
+    
     background: linear-gradient(135deg, #cf3fa4, #9b2c7a, #6600ff, #cf3fa4);
     background-size: 400% 400%;
     animation: fadeIn 2s ease-in-out, gradientFlow 8s ease infinite;
 
-    /* Smooth glow and polished style */
+    
     box-shadow: 0 20px 40px rgba(207, 63, 164, 0.4), 0 10px 20px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
@@ -191,7 +191,7 @@ ul {
     transform: scale(1.05);
 }
 
-/* Enhanced Section Styles */
+
 #projects, #contact, #about {
     padding: 5rem 2rem;
 }
@@ -219,73 +219,19 @@ ul {
     color: #666;
 }
 
-/* Enhanced About Section Styles */
+
 .about-container {
     display: flex;
     flex-direction: column;
     gap: 3rem;
     max-width: 1200px;
     margin: 0 auto;
-}
-
-.about-image-container {
-    display: flex;
-    justify-content: center;
     align-items: center;
-}
-
-.about-image-wrapper {
-    position: relative;
-    width: 300px;
-    height: 300px;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-.light-mode .about-image-wrapper {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.about-image {
-    width: 100%;
-    height: 100%;
-    object-fit:contain;
-    transition: transform 0.5s ease;
-}
-
-.about-image-wrapper:hover .about-image {
-    transform: scale(1.05);
-}
-
-.experience-badge {
-    position: absolute;
-    bottom: -20px;
-    right: -20px;
-    width: 100px;
-    height: 100px;
-    background: linear-gradient(135deg, #cf3fa4, #9b2c7a);
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    color: white;
-    box-shadow: 0 5px 15px rgba(207, 63, 164, 0.5);
-    animation: pulse 2s infinite;
+    min-height: 100vh;
 }
 
-.exp-number {
-    font-size: 1.8rem;
-    font-weight: 700;
-    line-height: 1;
-}
 
-.exp-text {
-    font-size: 0.7rem;
-    text-align: center;
-    line-height: 1.2;
-}
 
 .about-content {
     background: linear-gradient(145deg, #121212, #1a1a1a);
@@ -512,7 +458,7 @@ ul {
     }
 }
 
-/* Projects Section Styles */
+
 .projects-container {
     display: flex;
     flex-direction: column;
@@ -694,7 +640,7 @@ ul {
     background-color: rgba(255, 255, 255, 0.8);
 }
 
-/* Contact Section Styles */
+
 .contact-container {
     display: flex;
     flex-direction: column;
@@ -980,7 +926,7 @@ ul {
     transform: translateX(5px);
 }
 
-/* Animation for form validation error */
+
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
     10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
@@ -1264,8 +1210,8 @@ body {
     position: relative;
 }
 
-/* Optional: blinking cursor */
-/* Smooth fade in/out cursor */
+
+
 .highlight::after {
     content: "|";
     animation: smooth-blink 1.4s infinite ease-in-out;
@@ -1283,4 +1229,85 @@ body {
 @keyframes blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
+}
+
+
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    z-index: 1100;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    transition: 0.3s ease;
+}
+
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #1a1a1a;
+        padding: 1rem 0;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        z-index: 1000;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    nav ul li {
+        padding: 10px 20px;
+    }
+
+    .profile-photo {
+        width: 100%;
+        max-width: 280px;
+        height: auto;
+        float: none;
+        margin: 2rem auto 0 auto;
+        display: block;
+        position: static;
+    }
+
+    #home h1 {
+        font-size: 2.2rem;
+        text-align: center;
+    }
+
+    #home p {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    section {
+        padding: 2rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+  .about-cta {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .cta-button {
+    width: 100%;
+    justify-content: center;
+    font-size: 1rem;
+  }
 }
