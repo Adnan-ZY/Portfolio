@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,370 +8,553 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-
 <body>
     <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <span class="highlight">MY</span> Portfolio
+                </div>
+                
+                <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
 
-        <nav>
-            <div class="logo"><span class="highlight">MY</span> Portfolio</div>
-
-            <div class="hamburger" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
+                <ul class="nav-menu" id="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><button id="theme-toggle-button">Mode</button></li>
+                </ul>
             </div>
-
-            <ul id="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contacts</a></li>
-                <button id="theme-toggle-button">Mode</button>
-            </ul>
         </nav>
-
     </header>
-    <section id="home">
-        <h1>Code, Create, <span id="changing-word" class="highlight">Capture</span></h1>
 
-        <p>A passionate web developer and BSCS student, blending C#, HTML, CSS, and JavaScript with a creative eye
-            for photography—building digital experiences while capturing real moments.</p>
-        <a href="#contact" class="hire-me-btn">
-            <span class="btn-content">
-                Hire Me <i class="fas fa-arrow-right"></i>
-            </span>
-            <span class="btn-hover"></span>
-        </a>
-
-
-        <img src="assets/images/about.png" alt="Adnan's Photo" class="profile-photo">
-    </section>
-    <section id="projects">
-        <div class="section-header">
-            <h2>My <span class="highlight">Projects</span></h2>
-            <p class="section-description">Explore my latest work and creative solutions</p>
-        </div>
-
-        <div class="projects-container">
-            <!-- Wayns Lamps Project -->
-            <div class="project-card">
-                <div class="project-info">
-                    <h3>Wayns Lamps</h3>
-                    <p>A modern e-commerce website for premium lighting solutions with responsive design and seamless
-                        user experience.</p>
-                    <div class="tech-stack">
-                        <span>Node.js</span>
-                        <span>Express.js</span>
-                        <span>MongoDB</span>
-                        <span>HTML</span>
-                        <span>JavaScript</span>
-                    </div>
+    <main>
+        <section id="home" class="hero-section">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1>Code, Create, <span id="changing-word" class="highlight">Capture</span></h1>
+                    <p>A passionate web developer and BSCS student, blending C#, HTML, CSS, and JavaScript with a creative eye for photography—building digital experiences while capturing real moments.</p>
+                    <a href="#contact" class="hire-me-btn">
+                        <span class="btn-content">
+                            Hire Me <i class="fas fa-arrow-right"></i>
+                        </span>
+                        <span class="btn-hover"></span>
+                    </a>
                 </div>
-                <div class="project-showcase">
-                    <div class="slider-container">
-                        <div class="slider-progress">
-                            <div class="progress-bar" id="wayns-progress"></div>
-                        </div>
-                        <button class="prev" onclick="slideImages('wayns-slider', -1)">&#10094;</button>
-                        <div class="slider" id="wayns-slider">
-                            <img src="assets/images/Lampweb.png" alt="Wayns Lamps Project Screenshot 1"
-                                class="slide active">
-                            <img src="assets/images/Lampweb1.png" alt="Wayns Lamps Project Screenshot 2" class="slide">
-                            <img src="assets/images/Lampweb2.png" alt="Wayns Lamps Project Screenshot 3" class="slide">
-                            <img src="assets/images/Lampweb3.png" alt="Wayns Lamps Project Screenshot 4" class="slide">
-                            <img src="assets/images/Lampweb4.png" alt="Wayns Lamps Project Screenshot 5" class="slide">
-                        </div>
-                        <button class="next" onclick="slideImages('wayns-slider', 1)">&#10095;</button>
-                        <div class="slider-dots" id="wayns-dots">
-                            <span class="dot active" onclick="currentSlide('wayns-slider', 0)"></span>
-                            <span class="dot" onclick="currentSlide('wayns-slider', 1)"></span>
-                            <span class="dot" onclick="currentSlide('wayns-slider', 2)"></span>
-                            <span class="dot" onclick="currentSlide('wayns-slider', 3)"></span>
-                            <span class="dot" onclick="currentSlide('wayns-slider', 4)"></span>
-                        </div>
-                    </div>
+                <div class="hero-image">
+                    <img src="assets/images/about6.png" alt="Adnan's Photo" class="profile-photo">
                 </div>
             </div>
-            <div class="project-card">
-                <div class="project-info">
-                    <h3>Farm To Home</h3>
-                    <p>Online platform to connect local farmers with consumers for fresh produce delivery.</p>
-                    <div class="tech-stack">
-                        <span>.Net</span>
-                        <span>C#</span>
-                        <span>JavaScript</span>
-                        <span>MYSQL</span>
-                    </div>
-                </div>
-                <div class="project-showcase">
-                    <div class="slider-container">
-                        <div class="slider-progress">
-                            <div class="progress-bar" id="rolex-progress"></div>
-                        </div>
-                        <button class="prev" onclick="slideImages('rolex-slider', -1)">&#10094;</button>
-                        <div class="slider" id="rolex-slider">
-                            <img src="assets/images/farmtohome.png" alt="farmtohome Project Screenshot 1"
-                                class="slide active">
-                            <img src="assets/images/farmtohome1.png" alt="farmtohome Project Screenshot 2"
-                                class="slide">
+        </section>
 
-                        </div>
-                        <button class="next" onclick="slideImages('rolex-slider', 1)">&#10095;</button>
-                        <div class="slider-dots" id="rolex-dots">
-                            <span class="dot active" onclick="currentSlide('rolex-slider', 0)"></span>
-                            <span class="dot" onclick="currentSlide('rolex-slider', 1)"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="about">
-        <div class="section-header">
-            <h2>About <span class="highlight">Me</span></h2>
-            <p class="section-description">Get to know more about my skills and background</p>
-        </div>
-
-        <div class="about-container">
-
-
-            <div class="about-content">
-                <div class="about-bio">
-                    <h3>Web Developer & BSCS Student</h3>
-                    <p>I am a passionate web developer and BSCS(final-year) student with a strong foundation in modern
-                        web technologies. I love crafting dynamic websites and applications while continuously exploring
-                        new technologies to expand my skill set.</p>
-                    <p>Beyond coding, I have a keen eye for photography, capturing moments that tell a story. My
-                        technical knowledge combined with creative vision allows me to build engaging digital
-                        experiences.</p>
-
-                    <div class="personal-info">
-                        <div class="info-item">
-                            <span class="info-label"><i class="fas fa-user-graduate"></i> Education:</span>
-                            <span class="info-value">Bachelor of Science in Computer Science</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-label"><i class="fas fa-map-marker-alt"></i> Location:</span>
-                            <span class="info-value">Pakistan</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-label"><i class="fas fa-language"></i> Languages:</span>
-                            <span class="info-value">English, Urdu</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-label"><i class="fas fa-envelope"></i> Email:</span>
-                            <span class="info-value">madnanhz42@gmail.com</span>
-                        </div>
-                    </div>
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>My <span class="highlight">Projects</span></h2>
+                    <p class="section-description">Explore my latest work and creative solutions</p>
                 </div>
 
-                <div class="skills-container">
-                    <h3>My Skills</h3>
-
-                    <div class="skill-groups">
-                        <div class="skill-category">
-                            <h4>Programming</h4>
-                            <div class="skills">
-                                <div class="skill-item">
-                                    <div class="skill-info">
-                                        <span>C#</span>
-                                    </div>
-                    
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-info">
+                            <h3>Wayns Lamps</h3>
+                            <p>A modern e-commerce website for premium lighting solutions with responsive design and seamless user experience.</p>
+                            <div class="tech-stack">
+                                <span>Node.js</span>
+                                <span>Express.js</span>
+                                <span>MongoDB</span>
+                                <span>HTML</span>
+                                <span>JavaScript</span>
+                            </div>
+                        </div>
+                        <div class="project-showcase">
+                            <div class="slider-container">
+                                <div class="slider-progress">
+                                    <div class="progress-bar" id="wayns-progress"></div>
                                 </div>
-
-                                <div class="skill-item">
-                                    <div class="skill-info">
-                                        <span>C++</span>
-                                       
-                                    </div>
-                                    
+                                <button class="prev" onclick="slideImages('wayns-slider', -1)" aria-label="Previous image">&#10094;</button>
+                                <div class="slider" id="wayns-slider">
+                                    <img src="assets/images/Lampweb.png" alt="Wayns Lamps Project Screenshot 1" class="slide active">
+                                    <img src="assets/images/Lampweb1.png" alt="Wayns Lamps Project Screenshot 2" class="slide">
+                                    <img src="assets/images/Lampweb2.png" alt="Wayns Lamps Project Screenshot 3" class="slide">
+                                    <img src="assets/images/Lampweb3.png" alt="Wayns Lamps Project Screenshot 4" class="slide">
+                                    <img src="assets/images/Lampweb4.png" alt="Wayns Lamps Project Screenshot 5" class="slide">
                                 </div>
-
-                                <div class="skill-item">
-                                    <div class="skill-info">
-                                        <span>JavaScript</span>
-                                    
-                                    </div>
-                                 
+                                <button class="next" onclick="slideImages('wayns-slider', 1)" aria-label="Next image">&#10095;</button>
+                                <div class="slider-dots" id="wayns-dots">
+                                    <span class="dot active" onclick="currentSlide('wayns-slider', 0)"></span>
+                                    <span class="dot" onclick="currentSlide('wayns-slider', 1)"></span>
+                                    <span class="dot" onclick="currentSlide('wayns-slider', 2)"></span>
+                                    <span class="dot" onclick="currentSlide('wayns-slider', 3)"></span>
+                                    <span class="dot" onclick="currentSlide('wayns-slider', 4)"></span>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="skill-category">
-                            <h4>Web Development</h4>
-                            <div class="skills">
-                                <div class="skill-item">
-                                    <div class="skill-info">
-                                        <span>HTML</span>
-                                      
-                                    </div>
-                                  
+                    <div class="project-card">
+                        <div class="project-info">
+                            <h3>Farm To Home</h3>
+                            <p>Online platform to connect local farmers with consumers for fresh produce delivery.</p>
+                            <div class="tech-stack">
+                                <span>.NET</span>
+                                <span>C#</span>
+                                <span>JavaScript</span>
+                                <span>MySQL</span>
+                            </div>
+                        </div>
+                        <div class="project-showcase">
+                            <div class="slider-container">
+                                <div class="slider-progress">
+                                    <div class="progress-bar" id="farm-progress"></div>
                                 </div>
-
-                                <div class="skill-item">
-                                    <div class="skill-info">
-                                        <span>CSS</span>
-                                        
-                                    </div>
-                                    </div>
-
-                                <div class="skill-item">
-                                    <div class="skill-info">
-                                        <span>Node Js </span>
-                                       
-                                    </div>
-                                    
+                                <button class="prev" onclick="slideImages('farm-slider', -1)" aria-label="Previous image">&#10094;</button>
+                                <div class="slider" id="farm-slider">
+                                    <img src="assets/images/farmtohome.png" alt="Farm to Home Project Screenshot 1" class="slide active">
+                                    <img src="assets/images/farmtohome1.png" alt="Farm to Home Project Screenshot 2" class="slide">
+                                </div>
+                                <button class="next" onclick="slideImages('farm-slider', 1)" aria-label="Next image">&#10095;</button>
+                                <div class="slider-dots" id="farm-dots">
+                                    <span class="dot active" onclick="currentSlide('farm-slider', 0)"></span>
+                                    <span class="dot" onclick="currentSlide('farm-slider', 1)"></span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="about-cta">
-                    <a href="#contact" class="cta-button">
-                        <span>Contact Me</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                   <a href="assets/cv.pdf" download class="cta-button secondary">
-                        <i class="fas fa-download"></i> Download CV
-                    </a>
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>About <span class="highlight">Me</span></h2>
+                    <p class="section-description">Get to know more about my skills and background</p>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-content">
+                        <div class="about-bio">
+                            <h3>Web Developer & BSCS Student</h3>
+                            <p>I am a passionate web developer and BSCS (final-year) student with a strong foundation in modern web technologies. I love crafting dynamic websites and applications while continuously exploring new technologies to expand my skill set.</p>
+                            <p>Beyond coding, I have a keen eye for photography, capturing moments that tell a story. My technical knowledge combined with creative vision allows me to build engaging digital experiences.</p>
+
+                            <div class="personal-info">
+                                <div class="info-item">
+                                    <span class="info-label"><i class="fas fa-user-graduate"></i> Education:</span>
+                                    <span class="info-value">Bachelor of Science in Computer Science</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label"><i class="fas fa-map-marker-alt"></i> Location:</span>
+                                    <span class="info-value">Pakistan</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label"><i class="fas fa-language"></i> Languages:</span>
+                                    <span class="info-value">English, Urdu</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label"><i class="fas fa-envelope"></i> Email:</span>
+                                    <span class="info-value">madnanhz42@gmail.com</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skills-container">
+                            <h3>My Skills</h3>
+                            <div class="skill-groups">
+                                <div class="skill-category">
+                                    <h4>Programming</h4>
+                                    <div class="skills">
+                                        <div class="skill-item">
+                                            <span>C#</span>
+                                        </div>
+                                        <div class="skill-item">
+                                            <span>C++</span>
+                                        </div>
+                                        <div class="skill-item">
+                                            <span>JavaScript</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="skill-category">
+                                    <h4>Web Development</h4>
+                                    <div class="skills">
+                                        <div class="skill-item">
+                                            <span>HTML</span>
+                                        </div>
+                                        <div class="skill-item">
+                                            <span>CSS</span>
+                                        </div>
+                                        <div class="skill-item">
+                                            <span>Node.js</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="about-cta">
+                            <a href="#contact" class="cta-button">
+                                <span>Contact Me</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="assets/cv/cv.pdf" download class="cta-button secondary">
+                                <i class="fas fa-download"></i> Download CV
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="social-connect">
+                    <h3>Connect With Me</h3>
+                    <div class="social-icons">
+                        <a href="https://wa.me/923440712340" class="social-icon" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://www.instagram.com/zypher_he" class="social-icon" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/muhammad-adnan-767776332?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BFUGiIGZxTSqYmWFLNKDhBQ%3D%3D" class="social-icon" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/Adnan-ZY" class="social-icon" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="social-connect">
-            <h3>Connect With Me</h3>
-            <div class="social-icons">
-                <a href="https://wa.me/923440712340" class="social-icon" aria-label="WhatsApp">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="https://www.instagram.com/zypher_he" class="social-icon" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="#" class="social-icon" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="#" class="social-icon" aria-label="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="#" class="social-icon" aria-label="Twitter">
-                    <i class="fab fa-twitter"></i>
-                </a>
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Get In <span class="highlight">Touch</span></h2>
+                    <p class="section-description">Have a project in mind or want to collaborate? Let's talk!</p>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="contact-card">
+                            <div class="icon-container">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Location</h3>
+                                <p>Lahore, Pakistan</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-card">
+                            <div class="icon-container">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Email</h3>
+                                <p>madnanhz42@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-card">
+                            <div class="icon-container">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Phone</h3>
+                                <p>+923217078305</p>
+                            </div>
+                        </div>
+
+                        <div class="social-links">
+                            <a href="https://wa.me/923440712340" class="social-icon" aria-label="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="https://www.instagram.com/zypher_he" class="social-icon" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/muhammad-adnan-767776332?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BFUGiIGZxTSqYmWFLNKDhBQ%3D%3D" class="social-icon" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/Adnan-ZY" class="social-icon" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-container">
+                        <form id="contact-form" onsubmit="return validateForm()">
+                            <div class="form-header">
+                                <h3>Send Me a Message</h3>
+                            </div>
+
+                            <div id="error" class="error-message"></div>
+
+                            <div class="input-group">
+                                <div class="input-icon">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="input-field">
+                                    <input type="text" id="name" name="name" required>
+                                    <label for="name">Your Name</label>
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <div class="input-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="input-field">
+                                    <input type="email" id="email" name="email" required>
+                                    <label for="email">Your Email</label>
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <div class="input-icon">
+                                    <i class="fas fa-pen"></i>
+                                </div>
+                                <div class="input-field">
+                                    <textarea id="message" name="message" required></textarea>
+                                    <label for="message">Your Message</label>
+                                </div>
+                            </div>
+
+                            <button type="submit" id="c-btn">
+                                <span>Send Message</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
-
-
-
-    <section id="contact">
-        <div class="section-header">
-            <h2>Get In <span class="highlight">Touch</span></h2>
-            <p class="section-description">Have a project in mind or want to collaborate? Let's talk!</p>
-        </div>
-
-        <div class="contact-container">
-            <div class="contact-info">
-                <div class="contact-card">
-                    <div class="icon-container">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="info-content">
-                        <h3>Location</h3>
-                        <p>Lahore Pakistan</p>
-                    </div>
-                </div>
-
-                <div class="contact-card">
-                    <div class="icon-container">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="info-content">
-                        <h3>Email</h3>
-                        <p>madnanhz42@gmail.com</p>
-                    </div>
-                </div>
-
-                <div class="contact-card">
-                    <div class="icon-container">
-                        <i class="fas fa-phone-alt"></i>
-                    </div>
-                    <div class="info-content">
-                        <h3>Phone</h3>
-                        <p>+923217078305</p>
-                    </div>
-                </div>
-
-                <div class="social-links">
-                    <a href="https://wa.me/923440712340" class="social-icon" aria-label="WhatsApp" target="_blank">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                    <a href="https://www.instagram.com/zypher_he" class="social-icon" aria-label="Instagram"
-                        target="_blank">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/muhammad-adnan-767776332?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BFUGiIGZxTSqYmWFLNKDhBQ%3D%3D" class="social-icon" aria-label="LinkedIn" target="_blank">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://github.com/Adnan-ZY" class="social-icon" aria-label="GitHub" target="_blank">
-                        <i class="fab fa-github"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="contact-form-container">
-                <form id="contact-form" onsubmit="return validateForm()">
-                    <div class="form-header">
-                        <h3>Send Me a Message</h3>
-                    </div>
-
-                    <div id="error" class="error-message"></div>
-
-                    <div class="input-group">
-                        <div class="input-icon">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="input-field">
-                            <input type="text" id="name" name="name" required>
-                            <label for="name">Your Name</label>
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <div class="input-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="input-field">
-                            <input type="email" id="email" name="email" required>
-                            <label for="email">Your Email</label>
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <div class="input-icon">
-                            <i class="fas fa-pen"></i>
-                        </div>
-                        <div class="input-field">
-                            <textarea id="message" name="message" required></textarea>
-                            <label for="message">Your Message</label>
-                        </div>
-                    </div>
-
-                    <button type="submit" id="c-btn">
-                        <span>Send Message</span>
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer>
-        This Website belongs to Muhammad Adnan (FA21-BCS-037). All rights reserved.&copy; 2025
+        <div class="container">
+            <p>This Website belongs to Muhammad Adnan (FA21-BCS-037). All rights reserved. &copy; 2025</p>
+        </div>
     </footer>
 
+    <script>
+        // Typewriter Effect for changing words
+        class TypeWriter {
+            constructor(element, words, wait = 3000) {
+                this.element = element;
+                this.words = words;
+                this.txt = '';
+                this.wordIndex = 0;
+                this.wait = parseInt(wait, 10);
+                this.type();
+                this.isDeleting = false;
+            }
 
-    
-        <script src="assets/js/script.js"></script>
+            type() {
+                // Current index of word
+                const current = this.wordIndex % this.words.length;
+                // Get full text of current word
+                const fullTxt = this.words[current];
+
+                // Check if deleting
+                if (this.isDeleting) {
+                    // Remove char
+                    this.txt = fullTxt.substring(0, this.txt.length - 1);
+                } else {
+                    // Add char
+                    this.txt = fullTxt.substring(0, this.txt.length + 1);
+                }
+
+                // Insert txt into element
+                this.element.innerHTML = this.txt;
+
+                // Initial Type Speed
+                let typeSpeed = 150;
+
+                if (this.isDeleting) {
+                    typeSpeed /= 2;
+                }
+
+                // If word is complete
+                if (!this.isDeleting && this.txt === fullTxt) {
+                    // Make pause at end
+                    typeSpeed = this.wait;
+                    // Set delete to true
+                    this.isDeleting = true;
+                } else if (this.isDeleting && this.txt === '') {
+                    this.isDeleting = false;
+                    // Move to next word
+                    this.wordIndex++;
+                    // Pause before start typing
+                    typeSpeed = 500;
+                }
+
+                setTimeout(() => this.type(), typeSpeed);
+            }
+        }
+
+        // Initialize TypeWriter when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            const changingWord = document.getElementById('changing-word');
+            const words = ['Capture', 'Innovate', 'Design', 'Develop', 'Create'];
+            
+            // Initialize typewriter
+            new TypeWriter(changingWord, words, 2000);
+        });
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('nav-links');
+            const hamburger = document.querySelector('.hamburger');
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
+
+        // Theme toggle
+        document.getElementById('theme-toggle-button').addEventListener('click', function() {
+            document.body.classList.toggle('light-mode');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                
+                // Close mobile menu if open
+                const navLinks = document.getElementById('nav-links');
+                const hamburger = document.querySelector('.hamburger');
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+
+        // Form validation
+        function validateForm() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const errorDiv = document.getElementById('error');
+
+            if (!name || !email || !message) {
+                errorDiv.textContent = 'Please fill in all fields.';
+                errorDiv.style.display = 'block';
+                return false;
+            }
+
+            errorDiv.style.display = 'none';
+            alert('Message sent successfully!');
+            return false; // Prevent actual form submission for demo
+        }
+
+        // Slider functionality
+        function slideImages(sliderId, direction) {
+            const slider = document.getElementById(sliderId);
+            const slides = slider.querySelectorAll('.slide');
+            const dots = document.querySelectorAll(`#${sliderId.replace('slider', 'dots')} .dot`);
+            
+            let currentSlide = 0;
+            slides.forEach((slide, index) => {
+                if (slide.classList.contains('active')) {
+                    currentSlide = index;
+                }
+            });
+
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+
+            currentSlide += direction;
+            if (currentSlide >= slides.length) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = slides.length - 1;
+
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+
+            // Update progress bar
+            const progressBar = document.getElementById(sliderId.replace('slider', 'progress'));
+            const progressWidth = ((currentSlide + 1) / slides.length) * 100;
+            progressBar.style.width = progressWidth + '%';
+        }
+
+        function currentSlide(sliderId, slideIndex) {
+            const slider = document.getElementById(sliderId);
+            const slides = slider.querySelectorAll('.slide');
+            const dots = document.querySelectorAll(`#${sliderId.replace('slider', 'dots')} .dot`);
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            slides[slideIndex].classList.add('active');
+            dots[slideIndex].classList.add('active');
+
+            // Update progress bar
+            const progressBar = document.getElementById(sliderId.replace('slider', 'progress'));
+            const progressWidth = ((slideIndex + 1) / slides.length) * 100;
+            progressBar.style.width = progressWidth + '%';
+        }
+
+        // Input field animations
+        document.querySelectorAll('.input-field input, .input-field textarea').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.classList.add('focused');
+            });
+
+            input.addEventListener('blur', function() {
+                if (!this.value) {
+                    this.parentElement.classList.remove('focused');
+                }
+            });
+
+            input.addEventListener('input', function() {
+                if (this.value) {
+                    this.classList.add('has-value');
+                } else {
+                    this.classList.remove('has-value');
+                }
+            });
+        });
+
+        // Initialize progress bars
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set initial progress for first slides
+            document.getElementById('wayns-progress').style.width = '20%';
+            document.getElementById('farm-progress').style.width = '50%';
+        });
+
+        // Active navigation link highlighting
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
-
 </html>
