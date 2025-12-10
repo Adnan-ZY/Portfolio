@@ -37,7 +37,7 @@
         <section id="home" class="hero-section">
             <div class="hero-container">
                 <div class="hero-content">
-                    <h1>Code, Create, <span id="changing-word" class="highlight">Capture</span></h1>
+                    <h2>Crafting, Developing, <span id="changing-word" class="highlight"></span></h2>
                     <p>Software Engineer skilled in .NET, SQL, Angular, MVC, HTML, CSS, JavaScript, TailwindCSS, and Bootstrap. I build clean, efficient web applications and thrive in collaborative, team-oriented environments. Fast learner and problem-solver.</p>
 
                     <a href="#contact" class="hire-me-btn">
@@ -53,83 +53,18 @@
             </div>
         </section>
 
-        <section id="projects" class="projects-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>My <span class="highlight">Projects</span></h2>
-                    <p class="section-description">Explore my latest work and creative solutions</p>
-                </div>
+<section id="projects" class="projects-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>My <span class="highlight">Projects</span></h2>
+            <p class="section-description">Explore my latest work and creative solutions</p>
+        </div>
 
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-info">
-                            <h3>Wayns Lamps</h3>
-                            <p>A modern e-commerce website for premium lighting solutions with responsive design and seamless user experience.</p>
-                            <div class="tech-stack">
-                                <span>Node.js</span>
-                                <span>Express.js</span>
-                                <span>MongoDB</span>
-                                <span>HTML</span>
-                                <span>JavaScript</span>
-                            </div>
-                        </div>
-                        <div class="project-showcase">
-                            <div class="slider-container">
-                                <div class="slider-progress">
-                                    <div class="progress-bar" id="wayns-progress"></div>
-                                </div>
-                                <button class="prev" onclick="slideImages('wayns-slider', -1)" aria-label="Previous image">&#10094;</button>
-                                <div class="slider" id="wayns-slider">
-                                    <img src="assets/images/Lampweb.png" alt="Wayns Lamps Project Screenshot 1" class="slide active">
-                                    <img src="assets/images/Lampweb1.png" alt="Wayns Lamps Project Screenshot 2" class="slide">
-                                    <img src="assets/images/Lampweb2.png" alt="Wayns Lamps Project Screenshot 3" class="slide">
-                                    <img src="assets/images/Lampweb3.png" alt="Wayns Lamps Project Screenshot 4" class="slide">
-                                    <img src="assets/images/Lampweb4.png" alt="Wayns Lamps Project Screenshot 5" class="slide">
-                                </div>
-                                <button class="next" onclick="slideImages('wayns-slider', 1)" aria-label="Next image">&#10095;</button>
-                                <div class="slider-dots" id="wayns-dots">
-                                    <span class="dot active" onclick="currentSlide('wayns-slider', 0)"></span>
-                                    <span class="dot" onclick="currentSlide('wayns-slider', 1)"></span>
-                                    <span class="dot" onclick="currentSlide('wayns-slider', 2)"></span>
-                                    <span class="dot" onclick="currentSlide('wayns-slider', 3)"></span>
-                                    <span class="dot" onclick="currentSlide('wayns-slider', 4)"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-info">
-                            <h3>Farm To Home</h3>
-                            <p>Online platform to connect local farmers with consumers for fresh produce delivery.</p>
-                            <div class="tech-stack">
-                                <span>.NET</span>
-                                <span>C#</span>
-                                <span>JavaScript</span>
-                                <span>MySQL</span>
-                            </div>
-                        </div>
-                        <div class="project-showcase">
-                            <div class="slider-container">
-                                <div class="slider-progress">
-                                    <div class="progress-bar" id="farm-progress"></div>
-                                </div>
-                                <button class="prev" onclick="slideImages('farm-slider', -1)" aria-label="Previous image">&#10094;</button>
-                                <div class="slider" id="farm-slider">
-                                    <img src="assets/images/farmtohome.png" alt="Farm to Home Project Screenshot 1" class="slide active">
-                                    <img src="assets/images/farmtohome1.png" alt="Farm to Home Project Screenshot 2" class="slide">
-                                </div>
-                                <button class="next" onclick="slideImages('farm-slider', 1)" aria-label="Next image">&#10095;</button>
-                                <div class="slider-dots" id="farm-dots">
-                                    <span class="dot active" onclick="currentSlide('farm-slider', 0)"></span>
-                                    <span class="dot" onclick="currentSlide('farm-slider', 1)"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div class="projects-grid" id="projects-container">
+            <div style="text-align:center; color: #ccc;">Loading projects...</div>
+        </div>
+    </div>
+</section>
 
         <section id="about" class="about-section">
             <div class="container">
@@ -345,217 +280,244 @@
         </div>
     </footer>
 
-    <script>
-        // Typewriter Effect for changing words
-        class TypeWriter {
-            constructor(element, words, wait = 3000) {
-                this.element = element;
-                this.words = words;
-                this.txt = '';
-                this.wordIndex = 0;
-                this.wait = parseInt(wait, 10);
-                this.type();
-                this.isDeleting = false;
-            }
+<script>
+    // --- 1. CONFIGURATION ---
+    const CSV_URL = 'assets/projects.csv';
+    const SLIDE_INTERVAL = 3000; // Time in milliseconds (3 seconds)
 
-            type() {
-                // Current index of word
-                const current = this.wordIndex % this.words.length;
-                // Get full text of current word
-                const fullTxt = this.words[current];
+    // --- 2. CSV PARSER ---
+    function parseCSV(csvText) {
+        const rows = [];
+        let currentRow = [];
+        let currentCell = '';
+        let inQuotes = false;
 
-                // Check if deleting
-                if (this.isDeleting) {
-                    // Remove char
-                    this.txt = fullTxt.substring(0, this.txt.length - 1);
+        for (let i = 0; i < csvText.length; i++) {
+            const char = csvText[i];
+            const nextChar = csvText[i + 1];
+
+            if (char === '"') {
+                if (inQuotes && nextChar === '"') {
+                    currentCell += '"';
+                    i++;
                 } else {
-                    // Add char
-                    this.txt = fullTxt.substring(0, this.txt.length + 1);
+                    inQuotes = !inQuotes;
                 }
-
-                // Insert txt into element
-                this.element.innerHTML = this.txt;
-
-                // Initial Type Speed
-                let typeSpeed = 150;
-
-                if (this.isDeleting) {
-                    typeSpeed /= 2;
+            } else if (char === ',' && !inQuotes) {
+                currentRow.push(currentCell.trim());
+                currentCell = '';
+            } else if ((char === '\r' || char === '\n') && !inQuotes) {
+                if (currentCell || currentRow.length > 0) {
+                    currentRow.push(currentCell.trim());
+                    rows.push(currentRow);
                 }
-
-                // If word is complete
-                if (!this.isDeleting && this.txt === fullTxt) {
-                    // Make pause at end
-                    typeSpeed = this.wait;
-                    // Set delete to true
-                    this.isDeleting = true;
-                } else if (this.isDeleting && this.txt === '') {
-                    this.isDeleting = false;
-                    // Move to next word
-                    this.wordIndex++;
-                    // Pause before start typing
-                    typeSpeed = 500;
-                }
-
-                setTimeout(() => this.type(), typeSpeed);
+                currentRow = [];
+                currentCell = '';
+                if (char === '\r' && nextChar === '\n') i++;
+            } else {
+                currentCell += char;
             }
         }
+        if (currentCell || currentRow.length > 0) {
+            currentRow.push(currentCell.trim());
+            rows.push(currentRow);
+        }
+        return rows;
+    }
 
-        // Initialize TypeWriter when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            const changingWord = document.getElementById('changing-word');
-            const words = ['Capture', 'Innovate', 'Design', 'Develop', 'Create'];
+    // --- 3. MAIN FETCH FUNCTION ---
+    async function fetchProjects() {
+        const container = document.getElementById('projects-container');
+        
+        try {
+            const response = await fetch(CSV_URL);
             
-            // Initialize typewriter
-            new TypeWriter(changingWord, words, 2000);
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+            const data = await response.text();
+            const rows = parseCSV(data);
+            const projects = rows.slice(1); // Remove header
+            
+            container.innerHTML = ''; 
+
+            projects.forEach((row, index) => {
+                if (row.length < 4) return;
+
+                const title = row[0];
+                const description = row[1];
+                const techStack = row[2] ? row[2].split(';').map(t => `<span>${t.trim()}</span>`).join('') : '';
+                const images = row[3] ? row[3].split(';') : [];
+
+                if (images.length === 0) return;
+
+                const sliderId = `slider-${index}`;
+                const dotsId = `dots-${index}`;
+                const progressId = `progress-${index}`;
+
+                let slidesHtml = '';
+                let dotsHtml = '';
+                
+                images.forEach((img, i) => {
+                    const cleanPath = img.trim();
+                    const activeClass = i === 0 ? 'active' : '';
+                    
+                    // Added inline styles for FULL RESPONSIVENESS
+                    slidesHtml += `<img src="${cleanPath}" 
+                                        alt="${title} Image ${i+1}" 
+                                        class="slide ${activeClass}" 
+                                        style="width: 100%; height: 100%; object-fit: cover; display: ${i===0 ? 'block' : 'none'};">`;
+                                        
+                    dotsHtml += `<span class="dot ${activeClass}" onclick="currentSlide('${sliderId}', ${i})"></span>`;
+                });
+
+                // NO BUTTONS in this HTML structure
+                const cardHtml = `
+                    <div class="project-card">
+                        <div class="project-info">
+                            <h3>${title}</h3>
+                            <p>${description}</p>
+                            <div class="tech-stack">${techStack}</div>
+                        </div>
+                        <div class="project-showcase">
+                            <div class="slider-container" style="position: relative; overflow: hidden; height: 100%; min-height: 300px;">
+                                <div class="slider-progress">
+                                    <div class="progress-bar" id="${progressId}" style="width: ${(1/images.length)*100}%"></div>
+                                </div>
+                                
+                                <div class="slider" id="${sliderId}" style="height: 100%;">
+                                    ${slidesHtml}
+                                </div>
+                                
+                                <div class="slider-dots" id="${dotsId}">
+                                    ${dotsHtml}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                container.innerHTML += cardHtml;
+
+                // Start Auto-Slide for this specific project
+                if(images.length > 1) {
+                    setInterval(() => {
+                        slideImages(sliderId, 1);
+                    }, SLIDE_INTERVAL);
+                }
+            });
+
+        } catch (error) {
+            console.error('Error fetching projects:', error);
+            container.innerHTML = '<p style="text-align:center; color:red;">Failed to load projects. Ensure "assets/projects.csv" exists.</p>';
+        }
+    }
+
+    // --- 4. SLIDER LOGIC (Modified for Auto-play & Styling) ---
+    window.slideImages = function(sliderId, direction) {
+        const slider = document.getElementById(sliderId);
+        if(!slider) return;
+        
+        const slides = slider.querySelectorAll('.slide');
+        const dotsId = sliderId.replace('slider', 'dots');
+        const dots = document.getElementById(dotsId).querySelectorAll('.dot');
+        
+        let currentSlide = 0;
+        // Find current active index
+        slides.forEach((slide, index) => {
+            if (slide.classList.contains('active') || slide.style.display === 'block') {
+                currentSlide = index;
+            }
         });
 
-        // Mobile menu toggle
-        function toggleMenu() {
-            const navLinks = document.getElementById('nav-links');
-            const hamburger = document.querySelector('.hamburger');
-            navLinks.classList.toggle('active');
-            hamburger.classList.toggle('active');
+        // Hide current
+        slides[currentSlide].classList.remove('active');
+        slides[currentSlide].style.display = 'none';
+        if(dots[currentSlide]) dots[currentSlide].classList.remove('active');
+
+        // Calculate next
+        currentSlide += direction;
+        if (currentSlide >= slides.length) currentSlide = 0;
+        if (currentSlide < 0) currentSlide = slides.length - 1;
+
+        // Show next
+        slides[currentSlide].classList.add('active');
+        slides[currentSlide].style.display = 'block';
+        if(dots[currentSlide]) dots[currentSlide].classList.add('active');
+
+        // Update progress bar
+        const progressId = sliderId.replace('slider', 'progress');
+        const progressBar = document.getElementById(progressId);
+        if(progressBar) {
+            progressBar.style.width = ((currentSlide + 1) / slides.length) * 100 + '%';
+        }
+    }
+
+    // Allow clicking dots manually
+    window.currentSlide = function(sliderId, slideIndex) {
+        const slider = document.getElementById(sliderId);
+        const slides = slider.querySelectorAll('.slide');
+        const dotsId = sliderId.replace('slider', 'dots');
+        const dots = document.getElementById(dotsId).querySelectorAll('.dot');
+
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+            slide.style.display = 'none';
+        });
+        dots.forEach(dot => dot.classList.remove('active'));
+
+        slides[slideIndex].classList.add('active');
+        slides[slideIndex].style.display = 'block';
+        dots[slideIndex].classList.add('active');
+
+        const progressId = sliderId.replace('slider', 'progress');
+        const progressBar = document.getElementById(progressId);
+        if(progressBar) {
+            progressBar.style.width = ((slideIndex + 1) / slides.length) * 100 + '%';
+        }
+    }
+
+    // --- 5. INITIALIZATION ---
+    document.addEventListener('DOMContentLoaded', function() {
+        // Init Typewriter
+        const changingWord = document.getElementById('changing-word');
+        if (changingWord) {
+             // Simple fallback or reuse your class if preferred
+             const words = ['Interactive UI', 'Full-Stack Solutions', 'Dynamic Dashboards'];
+             let i = 0, j = 0, isDeleting = false;
+             function type() {
+                 const current = i % words.length;
+                 const fullTxt = words[current];
+                 if (isDeleting) {
+                     changingWord.innerHTML = fullTxt.substring(0, j--);
+                     if (j < 0) { isDeleting = false; i++; j = 0; }
+                 } else {
+                     changingWord.innerHTML = fullTxt.substring(0, j++);
+                     if (j > fullTxt.length) { isDeleting = true; setTimeout(type, 2000); return; }
+                 }
+                 setTimeout(type, isDeleting ? 100 : 200);
+             }
+             type();
         }
 
-        // Theme toggle
-        document.getElementById('theme-toggle-button').addEventListener('click', function() {
+        // Fetch Projects
+        fetchProjects();
+
+        // Input Animations & Mobile Menu
+        document.querySelectorAll('.input-field input, .input-field textarea').forEach(input => {
+            input.addEventListener('focus', function() { this.parentElement.classList.add('focused'); });
+            input.addEventListener('blur', function() { if (!this.value) this.parentElement.classList.remove('focused'); });
+        });
+        
+        // Utilities
+        window.toggleMenu = function() {
+            document.getElementById('nav-links').classList.toggle('active');
+            document.querySelector('.hamburger').classList.toggle('active');
+        }
+        
+        document.getElementById('theme-toggle-button')?.addEventListener('click', function() {
             document.body.classList.toggle('light-mode');
         });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-                
-                // Close mobile menu if open
-                const navLinks = document.getElementById('nav-links');
-                const hamburger = document.querySelector('.hamburger');
-                navLinks.classList.remove('active');
-                hamburger.classList.remove('active');
-            });
-        });
-
-        // Form validation
-        function validateForm() {
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            const errorDiv = document.getElementById('error');
-
-            if (!name || !email || !message) {
-                errorDiv.textContent = 'Please fill in all fields.';
-                errorDiv.style.display = 'block';
-                return false;
-            }
-
-            errorDiv.style.display = 'none';
-            alert('Message sent successfully!');
-            return false; // Prevent actual form submission for demo
-        }
-
-        // Slider functionality
-        function slideImages(sliderId, direction) {
-            const slider = document.getElementById(sliderId);
-            const slides = slider.querySelectorAll('.slide');
-            const dots = document.querySelectorAll(`#${sliderId.replace('slider', 'dots')} .dot`);
-            
-            let currentSlide = 0;
-            slides.forEach((slide, index) => {
-                if (slide.classList.contains('active')) {
-                    currentSlide = index;
-                }
-            });
-
-            slides[currentSlide].classList.remove('active');
-            dots[currentSlide].classList.remove('active');
-
-            currentSlide += direction;
-            if (currentSlide >= slides.length) currentSlide = 0;
-            if (currentSlide < 0) currentSlide = slides.length - 1;
-
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
-
-            // Update progress bar
-            const progressBar = document.getElementById(sliderId.replace('slider', 'progress'));
-            const progressWidth = ((currentSlide + 1) / slides.length) * 100;
-            progressBar.style.width = progressWidth + '%';
-        }
-
-        function currentSlide(sliderId, slideIndex) {
-            const slider = document.getElementById(sliderId);
-            const slides = slider.querySelectorAll('.slide');
-            const dots = document.querySelectorAll(`#${sliderId.replace('slider', 'dots')} .dot`);
-
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-
-            slides[slideIndex].classList.add('active');
-            dots[slideIndex].classList.add('active');
-
-            // Update progress bar
-            const progressBar = document.getElementById(sliderId.replace('slider', 'progress'));
-            const progressWidth = ((slideIndex + 1) / slides.length) * 100;
-            progressBar.style.width = progressWidth + '%';
-        }
-
-        // Input field animations
-        document.querySelectorAll('.input-field input, .input-field textarea').forEach(input => {
-            input.addEventListener('focus', function() {
-                this.parentElement.classList.add('focused');
-            });
-
-            input.addEventListener('blur', function() {
-                if (!this.value) {
-                    this.parentElement.classList.remove('focused');
-                }
-            });
-
-            input.addEventListener('input', function() {
-                if (this.value) {
-                    this.classList.add('has-value');
-                } else {
-                    this.classList.remove('has-value');
-                }
-            });
-        });
-
-        // Initialize progress bars
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set initial progress for first slides
-            document.getElementById('wayns-progress').style.width = '20%';
-            document.getElementById('farm-progress').style.width = '50%';
-        });
-
-        // Active navigation link highlighting
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-menu a');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
+    });
+</script>
 </body>
 </html>
