@@ -8,6 +8,99 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style3.css">
 </head>
+    <style>
+/* Container & Section */
+.contact-section {
+    padding: 80px 20px;
+    background-color: #000;
+    color: #fff;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-header .highlight {
+    color: #d63af9;
+}
+
+/* Contact Grid */
+.contact-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+/* Contact Info Cards */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 250px;
+    flex: 1;
+}
+
+.contact-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: #111;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.icon-container {
+    color: #9b59b6;
+    font-size: 20px;
+}
+
+.info-content h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.info-content p {
+    margin: 0;
+    font-size: 14px;
+    color: #ccc;
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.social-icons .social-icon {
+    color: #fff;
+    font-size: 22px;
+    transition: 0.3s;
+}
+
+.social-icons .social-icon:hover {
+    color: #d63af9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contact-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .social-icons {
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 30px;
+    }
+}
+</style>
 <body>
     <header>
         <nav class="navbar">
@@ -453,6 +546,7 @@
 </script>
 </body>
 </html>
+
 
 
 
