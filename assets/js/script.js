@@ -173,10 +173,13 @@ document.addEventListener('DOMContentLoaded', function() {
         themeBtn.addEventListener('click', function() {
             document.body.classList.toggle('light-mode');
             document.documentElement.classList.toggle('light-mode');
+            const icon = this.querySelector('i');
             if (document.body.classList.contains('light-mode')) {
-                this.textContent = 'Dark';
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
             } else {
-                this.textContent = 'Light';
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
             }
         });
     }
