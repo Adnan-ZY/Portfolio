@@ -1,168 +1,611 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adnan's Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style3.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#cf3fa4',
+                        'primary-dark': '#9b2c7a',
+                        dark: {
+                            900: '#000000',
+                            800: '#111111',
+                            700: '#121212',
+                            600: '#1a1a1a',
+                        }
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1.5s ease-in-out',
+                        'pulse-glow': 'pulse 2s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles that are hard to do with Tailwind */
+        body { font-family: 'Poppins', sans-serif; }
+        
+        .highlight::after {
+            content: "|";
+            animation: smooth-blink 1s infinite ease-in-out;
+            margin-left: 0.25rem;
+            font-weight: 100;
+        }
+        
+        @keyframes smooth-blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+        
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+        
+        /* Mobile Menu Styles */
+        @media (max-width: 767px) {
+            .nav-menu.active {
+                display: flex !important;
+                position: fixed;
+                top: 56px;
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 56px);
+                background: #1a1a1a;
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 2rem;
+                padding-top: 3rem;
+                z-index: 100;
+            }
+        }
+        
+        /* Active nav link underline */
+        .nav-link.active { color: #cf3fa4 !important; }
+        .nav-link.active::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 50px;
+            height: 2px;
+            background-color: #cf3fa4;
+            border-radius: 2px;
+        }
+        @media (min-width: 768px) {
+            .nav-link.active::after {
+                left: 0;
+                transform: none;
+                width: 100%;
+                max-width: none;
+            }
+        }
+        
+        .input-field.focused label,
+        .input-field input:focus ~ label,
+        .input-field textarea:focus ~ label {
+            top: -10px;
+            left: 10px;
+            font-size: 0.8rem;
+            color: #cf3fa4;
+            background: #121212;
+            padding: 0 5px;
+        }
+        
+        /* Light Mode - Full App Styles */
+        .light-mode { background: #f8f9fa !important; color: #333 !important; }
+        .light-mode .nav-bg { background: rgba(255,255,255,0.95) !important; border-bottom: 1px solid #e0e0e0; }
+        .light-mode .nav-menu { background: #ffffff !important; }
+        .light-mode .nav-link { color: #333 !important; }
+        .light-mode .nav-link:hover, .light-mode .nav-link.active { color: #cf3fa4 !important; }
+        .light-mode .hamburger span { background: #333 !important; }
+        .light-mode .text-white { color: #222 !important; }
+        .light-mode .text-gray-400, .light-mode .text-gray-500 { color: #666 !important; }
+        .light-mode .text-gray-300 { color: #555 !important; }
+        .light-mode .card-bg { background: linear-gradient(145deg, #ffffff, #f0f0f0) !important; box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important; }
+        .light-mode .about-card, .light-mode .bg-white\/5 { background: #fff !important; border-color: #e0e0e0 !important; }
+        .light-mode .bg-gradient-to-br { background: linear-gradient(145deg, #fff, #f5f5f5) !important; }
+        .light-mode .bg-dark-700, .light-mode .bg-dark-600, .light-mode .bg-dark-800 { background: #f5f5f5 !important; }
+        .light-mode .border-white\/10 { border-color: #e0e0e0 !important; }
+        .light-mode .border-white\/5 { border-color: #eee !important; }
+        .light-mode .input-field.focused label { background: #fff !important; }
+        .light-mode input, .light-mode textarea { background: #fff !important; border-color: #ddd !important; color: #333 !important; }
+        .light-mode input:focus, .light-mode textarea:focus { border-color: #cf3fa4 !important; background: #fdf5fa !important; }
+        .light-mode .peer-focus\:bg-dark-700 { background: #fff !important; }
+        .light-mode footer { background: #f0f0f0 !important; border-color: #ddd !important; }
+        .light-mode .bg-white\/5 { background: rgba(0,0,0,0.02) !important; }
+        .light-mode .shadow-xl, .light-mode .shadow-2xl { box-shadow: 0 10px 40px rgba(0,0,0,0.08) !important; }
+        .light-mode .from-dark-700\/95, .light-mode .to-dark-600\/95 { background: linear-gradient(145deg, #fff, #f8f8f8) !important; }
+        .light-mode .project-card { background: linear-gradient(145deg, #fff, #f5f5f5) !important; border: 1px solid #e5e5e5 !important; }
+        .light-mode .skill-card { background: rgba(0,0,0,0.02) !important; border-color: #e0e0e0 !important; }
+        .light-mode .skill-card:hover { background: rgba(207,63,164,0.08) !important; border-color: rgba(207,63,164,0.5) !important; }
+        
+        /* Skill card animations */
+        .skill-card {
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+        .skill-card:nth-child(1) { animation-delay: 0.05s; }
+        .skill-card:nth-child(2) { animation-delay: 0.1s; }
+        .skill-card:nth-child(3) { animation-delay: 0.15s; }
+        .skill-card:nth-child(4) { animation-delay: 0.2s; }
+        .skill-card:nth-child(5) { animation-delay: 0.25s; }
+        .skill-card:nth-child(6) { animation-delay: 0.3s; }
+        .skill-card:nth-child(7) { animation-delay: 0.35s; }
+        .skill-card:nth-child(8) { animation-delay: 0.4s; }
+        .skill-card:nth-child(9) { animation-delay: 0.45s; }
+        .skill-card:nth-child(10) { animation-delay: 0.5s; }
+        .skill-card:nth-child(11) { animation-delay: 0.55s; }
+        .skill-card:nth-child(12) { animation-delay: 0.6s; }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Slider styles */
+        .slide { display: none; }
+        .slide.active { display: block; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Swiper Depth Slider */
+        .slider-depth {
+            position: relative;
+            background: #000000 !important;
+        }
+        .light-mode .slider-depth {
+            background: #ffffff !important;
+            color: #0f172a;
+        }
+        .projectSwiper {
+            perspective: 1400px;
+        }
+        .projectSwiper .swiper-wrapper {
+            padding: 1rem 0 3.5rem;
+            display: flex;
+            flex-direction: row;
+        }
+        .projectSwiper .swiper-slide {
+            width: 100%;
+            max-width: 56rem;
+            aspect-ratio: 16 / 9;
+            max-height: 600px;
+            opacity: 0.35;
+            transform-style: preserve-3d;
+            transition: all 0.5s cubic-bezier(0.22, 0.9, 0.36, 1);
+            filter: saturate(0.7);
+            border-radius: 1rem;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .projectSwiper .swiper-slide:hover {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transform: scale(1.05);
+        }
+        @media (min-width: 640px) {
+            .projectSwiper .swiper-slide { width: 90%; }
+        }
+        @media (min-width: 768px) {
+            .projectSwiper .swiper-slide { width: 80%; }
+        }
+        .projectSwiper .swiper-slide-prev,
+        .projectSwiper .swiper-slide-next {
+            opacity: 0.6;
+            transform: translateZ(-80px) scale(0.9);
+            filter: saturate(0.9);
+        }
+        .projectSwiper .swiper-slide-active {
+            opacity: 1;
+            transform: translateZ(140px) scale(1);
+            filter: saturate(1.05);
+        }
+        .projectSwiper .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: contrast(1.05) saturate(1.05);
+        }
+    </style>
 </head>
-<body>
+<body class="bg-black text-white leading-relaxed overflow-x-hidden animate-fade-in">
+    <!-- Header -->
     <header>
-        <nav class="navbar">
-            <div class="nav-container">
-                <div class="logo">
-                    <span class="highlight">Code</span> With Adnan
+        <nav class="fixed top-0 left-0 right-0 bg-dark-600/95 backdrop-blur-md z-50 py-3 nav-bg">
+            <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
+                <div class="text-2xl font-bold">
+                    <span class="text-primary font-bold">Code</span> With Adnan
                 </div>
                 
-                <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <div class="hamburger flex flex-col cursor-pointer gap-1 z-[110] md:hidden" onclick="toggleMenu()">
+                    <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
+                    <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
+                    <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
                 </div>
 
-                <ul class="nav-menu" id="nav-links">
-                    <li><a href="#home">Homee</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><button id="theme-toggle-button">Mode</button></li>
+                <ul id="nav-links" class="nav-menu hidden md:flex md:relative md:top-0 md:left-0 md:w-auto md:h-auto md:bg-transparent md:backdrop-blur-none md:flex-row md:justify-end md:items-center md:gap-8 md:pt-0 list-none">
+                    <li class="w-full md:w-auto text-center"><a href="#home" class="nav-link text-white hover:text-primary transition-colors font-medium text-xl md:text-base py-4 md:py-2 block relative" onclick="closeMenuOnClick()">Home</a></li>
+                    <li class="w-full md:w-auto text-center"><a href="#about" class="nav-link text-white hover:text-primary transition-colors font-medium text-xl md:text-base py-4 md:py-2 block relative" onclick="closeMenuOnClick()">About</a></li>
+                    <li class="w-full md:w-auto text-center"><a href="#projects" class="nav-link text-white hover:text-primary transition-colors font-medium text-xl md:text-base py-4 md:py-2 block relative" onclick="closeMenuOnClick()">Projects</a></li>
+                    <li class="w-full md:w-auto text-center"><a href="#contact" class="nav-link text-white hover:text-primary transition-colors font-medium text-xl md:text-base py-4 md:py-2 block relative" onclick="closeMenuOnClick()">Contact</a></li>
+                    <li class="w-full md:w-auto text-center mt-4 md:mt-0"><button id="theme-toggle-button" class="bg-gradient-to-r from-primary to-primary-dark text-white px-6 py-3 md:px-4 md:py-2 rounded-full font-medium hover:scale-105 hover:shadow-lg hover:shadow-primary/40 transition-all">Light</button></li>
                 </ul>
             </div>
         </nav>
     </header>
 
     <main>
-        <section id="home" class="hero-section">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <h2>Crafting, Developing, <span id="changing-word" class="highlight"></span></h2>
-                    <p>Software Engineer skilled in .NET, SQL, Angular, MVC, HTML, CSS, JavaScript, TailwindCSS, and Bootstrap. I build clean, efficient web applications and thrive in collaborative, team-oriented environments. Fast learner and problem-solver.</p>
-
-                    <a href="#contact" class="hire-me-btn">
-                        <span class="btn-content">
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center pt-16 pb-8 md:pt-24 md:pb-16">
+            <div class="max-w-6xl mx-auto px-3 sm:px-4 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-center">
+                <div class="order-2 md:order-1 text-center md:text-left">
+                    <h2 class="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-semibold mb-3 md:mb-6 leading-tight">
+                        Hi, I'm <span class="text-primary font-bold">Adnan</span>
+                    </h2>
+                    <p class="text-2xl sm:text-3xl md:text-3xl text-gray-300 mb-3 md:mb-6 font-medium">
+                        <span id="changing-word" class="text-primary font-semibold highlight"></span>
+                    </p>
+                    <p class="text-base sm:text-base md:text-lg text-gray-400 mb-4 md:mb-8 max-w-xl mx-auto md:mx-0">
+                        Software Engineer skilled in .NET, SQL, Angular, MVC, HTML, CSS, JavaScript, TailwindCSS, and Bootstrap. Building clean, efficient web applications.
+                    </p>
+                    <a href="#contact" class="inline-block bg-gradient-to-r from-primary to-primary-dark text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold uppercase tracking-wide shadow-lg shadow-primary/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/60 transition-all text-sm md:text-base">
+                        <span class="flex items-center gap-2">
                             Hire Me <i class="fas fa-arrow-right"></i>
                         </span>
-                        <span class="btn-hover"></span>
                     </a>
                 </div>
-                <div class="hero-image">
-                    <img src="assets/images/about6.png" alt="Adnan's Photo" class="profile-photo">
+                <div class="order-1 md:order-2 flex justify-center items-center">
+                    <img src="https://user-images.githubusercontent.com/74038190/229223263-cf2e4b07-2615-4f87-9c38-e37600f8381a.gif" alt="Developer Animation" class="w-64 sm:w-72 md:w-80 lg:w-96 max-w-md">
                 </div>
             </div>
         </section>
 
-<section id="projects" class="projects-section">
-    <div class="container">
-        <div class="section-header">
-            <h2>My <span class="highlight">Projects</span></h2>
-            <p class="section-description">Explore my latest work and creative solutions</p>
-        </div>
+        <!-- Projects Section -->
+        <section id="projects" class="py-12 md:py-20 overflow-hidden slider-depth relative">
+            <div class="text-center mb-8 md:mb-12 px-3 sm:px-4">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-3">
+                    My <span class="text-primary font-bold">Projects</span>
+                </h2>
+                <p class="text-base sm:text-lg text-gray-500 max-w-xl mx-auto">Explore my latest work and creative solutions</p>
+            </div>
 
-        <div class="projects-grid" id="projects-container">
-            <div style="text-align:center; color: #ccc;">Loading projects...</div>
-        </div>
-    </div>
-</section>
+            <div class="swiper projectSwiper w-full pb-12">
+                <div class="swiper-wrapper" id="project-slides">
+                    <!-- Slides loaded from CSV -->
+                </div>
+            </div>
+        </section>
 
-        <section id="about" class="about-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>About <span class="highlight">Me</span></h2>
-                    <p class="section-description">Get to know more about my skills and background</p>
+        <!-- Skills Section -->
+        <section id="skills" class="py-12 md:py-20 relative overflow-hidden">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(207,63,164,0.08),transparent_50%)] pointer-events-none"></div>
+            <div class="max-w-6xl mx-auto px-3 sm:px-4 relative z-10">
+                <div class="text-center mb-8 md:mb-16">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-3">
+                        My <span class="text-primary font-bold">Skills</span>
+                    </h2>
+                    <p class="text-base sm:text-lg text-gray-500 max-w-xl mx-auto">Technologies and tools I work with</p>
                 </div>
 
-                <div class="about-grid">
-                    <div class="about-content">
-                        <div class="about-bio">
-                            <h3>Web Developer & BSCS Student</h3>
-                            <p>I am a passionate web developer and BSCS (final-year) student with a strong foundation in modern web technologies. I love crafting dynamic websites and applications while continuously exploring new technologies to expand my skill set.</p>
-                            <p>Beyond coding, I have a keen eye for photography, capturing moments that tell a story. My technical knowledge combined with creative vision allows me to build engaging digital experiences.</p>
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 md:gap-6">
+                    <!-- C# -->
+                    <div class="skill-card group bg-white/5 border border-white/10 rounded-2xl p-4 md:p-6 flex flex-col items-center justify-center gap-3 hover:bg-primary/10 hover:border-primary/50 hover:scale-105 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+                        <i class="devicon-csharp-plain text-4xl md:text-5xl text-purple-500 group-hover:text-primary transition-colors"></i>
+                        <span class="text-xs md:text-sm font-medium text-gray-400 group-hover:text-white transition-colors">C#</span>
+                    </div>
+                    <!-- .NET -->
+                    <div class="skill-card group bg-white/5 border border-white/10 rounded-2xl p-4 md:p-6 flex flex-col items-center justify-center gap-3 hover:bg-primary/10 hover:border-primary/50 hover:scale-105 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+                        <i class="devicon-dotnetcore-plain text-4xl md:text-5xl text-purple-600 group-hover:text-primary transition-colors"></i>
+                        <span class="text-xs md:text-sm font-medium text-gray-400 group-hover:text-white transition-colors">.NET</span>
+                    </div>
+                    <!-- SQL Server -->
+                    <div class="skill-card group bg-white/5 border border-white/10 rounded-2xl p-4 md:p-6 flex flex-col items-center justify-center gap-3 hover:bg-primary/10 hover:border-primary/50 hover:scale-105 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+                        <i class="devicon-microsoftsqlserver-plain text-4xl md:text-5xl text-red-500 group-hover:text-primary transition-colors"></i>
+                        <span class="text-xs md:text-sm font-medium text-gray-400 group-hover:text-white transition-colors">SQL Server</span>
+                    </div>
+                    <!-- Angular -->
+                    <div class="skill-card group bg-white/5 border border-white/10 rounded-2xl p-4 md:p-6 flex flex-col items-center justify-center gap-3 hover:bg-primary/10 hover:border-primary/50 hover:scale-105 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+                        <i class="devicon-angularjs-plain text-4xl md:text-5xl text-red-600 group-hover:text-primary transition-colors"></i>
+                        <span class="text-xs md:text-sm font-medium text-gray-400 group-hover:text-white transition-colors">Angular</span>
+                    </div>
+                    <!-- JavaScript -->
+                    <div class="skill-card group bg-white/5 border border-white/10 rounded-2xl p-4 md:p-6 flex flex-col items-center justify-center gap-3 hover:bg-primary/10 hover:border-primary/50 hover:scale-105 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+                        <i class="devicon-javascript-plain text-4xl md:text-5xl text-yellow-400 group-hover:text-primary transition-colors"></i>
+                        <span class="text-xs md:text-sm font-medium text-gray-400 group-hover:text-white transition-colors">JavaScript</span>
+                    </div>
+                    <!-- TypeScript -->
+                    <div class="skill-card group bg-white/5 border border-white/10 rounded-2xl p-4 md:p-6 flex flex-col items-center justify-center gap-3 hover:bg-primary/10 hover:border-primary/50 hover:scale-105 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+                        <i class="devicon-typescript-plain text-4xl md:text-5xl text-blue-500 group-hover:text-primary transition-colors"></i>
+                        <span class="text-xs md:text-sm font-medium text-gray-400 group-hover:text-white transition-colors">TypeScript</span>
+                    </div>
+                    <!-- HTML5 -->
+                    <div class="skill-card group bg-white/5 border border-white/10 rounded-2xl p-4 md:p-6 flex flex-col items-center justify-center gap-3 hover:bg-primary/10 hover:border-primary/50 hover:scale-105 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+                        <i class="devicon-html5-plain text-4xl md:text-5xl text-orange-500 group-hover:text-primary transition-colors"></i>
+                        <span class="text-xs md:text-sm font-medium text-gray-400 group-hover:text-white transition-colors">HTML5</span>
+                    </div>
+                    <!-- CSS3 -->
+                    <div class="skill-card group bg-white/5 border border-white/10 rounded-2xl p-4 md:p-6 flex flex-col items-center justify-center gap-3 hover:bg-primary/10 hover:border-primary/50 hover:scale-105 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+                        <i class="devicon-css3-plain text-4xl md:text-5xl text-blue-400 group-hover:text-primary transition-colors"></i>
+                        <span class="text-xs md:text-sm font-medium text-gray-400 group-hover:text-white transition-colors">CSS3</span>
+                    </div>
+                    <!-- TailwindCSS -->
+                    <div class="skill-card group bg-white/5 border border-white/10 rounded-2xl p-4 md:p-6 flex flex-col items-center justify-center gap-3 hover:bg-primary/10 hover:border-primary/50 hover:scale-105 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+                        <i class="devicon-tailwindcss-plain text-4xl md:text-5xl text-cyan-400 group-hover:text-primary transition-colors"></i>
+                        <span class="text-xs md:text-sm font-medium text-gray-400 group-hover:text-white transition-colors">Tailwind</span>
+                    </div>
+                    <!-- Bootstrap -->
+                    <div class="skill-card group bg-white/5 border border-white/10 rounded-2xl p-4 md:p-6 flex flex-col items-center justify-center gap-3 hover:bg-primary/10 hover:border-primary/50 hover:scale-105 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+                        <i class="devicon-bootstrap-plain text-4xl md:text-5xl text-purple-500 group-hover:text-primary transition-colors"></i>
+                        <span class="text-xs md:text-sm font-medium text-gray-400 group-hover:text-white transition-colors">Bootstrap</span>
+                    </div>
+                    <!-- Git -->
+                    <div class="skill-card group bg-white/5 border border-white/10 rounded-2xl p-4 md:p-6 flex flex-col items-center justify-center gap-3 hover:bg-primary/10 hover:border-primary/50 hover:scale-105 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+                        <i class="devicon-git-plain text-4xl md:text-5xl text-orange-600 group-hover:text-primary transition-colors"></i>
+                        <span class="text-xs md:text-sm font-medium text-gray-400 group-hover:text-white transition-colors">Git</span>
+                    </div>
+                    <!-- VS Code -->
+                    <div class="skill-card group bg-white/5 border border-white/10 rounded-2xl p-4 md:p-6 flex flex-col items-center justify-center gap-3 hover:bg-primary/10 hover:border-primary/50 hover:scale-105 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+                        <i class="devicon-vscode-plain text-4xl md:text-5xl text-blue-500 group-hover:text-primary transition-colors"></i>
+                        <span class="text-xs md:text-sm font-medium text-gray-400 group-hover:text-white transition-colors">VS Code</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                            <div class="personal-info">
-                                <div class="info-item">
-                                    <span class="info-label"><i class="fas fa-user-graduate"></i> Education:</span>
-                                    <span class="info-value">Bachelor of Science in Computer Science</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label"><i class="fas fa-map-marker-alt"></i> Location:</span>
-                                    <span class="info-value">Pakistan</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label"><i class="fas fa-language"></i> Languages:</span>
-                                    <span class="info-value">English, Urdu</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label"><i class="fas fa-envelope"></i> Email:</span>
-                                    <span class="info-value">madnanhz42@gmail.com</span>
-                                </div>
+        <!-- About Section -->
+        <section id="about" class="py-12 md:py-20">
+            <div class="max-w-6xl mx-auto px-3 sm:px-4">
+                <div class="text-center mb-8 md:mb-16">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-3">
+                        About <span class="text-primary font-bold">Me</span>
+                    </h2>
+                    <p class="text-base sm:text-lg text-gray-500 max-w-xl mx-auto">Get to know more about my skills and background</p>
+                </div>
+
+                <div class="grid gap-8 md:gap-12">
+                    <div class="bg-gradient-to-br from-dark-700 to-dark-600 rounded-2xl p-5 sm:p-8 shadow-xl card-bg">
+                        <!-- Intro -->
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-semibold text-primary mb-4">Muhammad Adnan</h3>
+                            <p class="text-gray-400 leading-relaxed mb-4">
+                                Software Engineer with experience across .NET, Angular, and SQL Server. I build clean, scalable web applications and enjoy turning complex requirements into simple, reliable user experiences.
+                            </p>
+                            <div class="flex flex-wrap gap-4 text-gray-400 text-sm">
+                                <span class="flex items-center gap-2"><i class="fas fa-envelope"></i> madnanhz42@gmail.com</span>
+                                <span class="flex items-center gap-2"><i class="fas fa-phone"></i> +923217078305</span>
+                                <span class="flex items-center gap-2"><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/m-adnan" target="_blank" class="text-primary hover:underline">M-Adnan</a></span>
                             </div>
                         </div>
 
-                        <div class="skills-container">
-                            <h3>My Skills</h3>
-                            <div class="skill-groups">
-                                <div class="skill-category">
-                                    <h4>Programming</h4>
-                                    <div class="skills">
-                                        <div class="skill-item">
-                                            <span>C#</span>
-                                        </div>
-                                        <div class="skill-item">
-                                            <span>C++</span>
-                                        </div>
-                                        <div class="skill-item">
-                                            <span>JavaScript</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="skill-category">
-                                    <h4>Web Development</h4>
-                                    <div class="skills">
-                                        <div class="skill-item">
-                                            <span>HTML</span>
-                                        </div>
-                                        <div class="skill-item">
-                                            <span>CSS</span>
-                                        </div>
-                                        <div class="skill-item">
-                                            <span>Node.js</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="about-cta">
-                            <a href="#contact" class="cta-button">
+                        <!-- CTA -->
+                        <div class="flex flex-wrap gap-4 mb-8">
+                            <a href="#contact" class="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-medium hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/40 transition-all">
                                 <span>Contact Me</span>
                                 <i class="fas fa-arrow-right"></i>
                             </a>
-                            <a href="assets/cv.pdf" download class="cta-button secondary">
+                            <a href="assets/cv.pdf" download class="flex items-center gap-2 border border-primary text-primary px-6 py-3 rounded-full font-medium hover:bg-primary/10 hover:-translate-y-1 transition-all">
                                 <i class="fas fa-download"></i> Download CV
                             </a>
+                        </div>
+
+                        <!-- Details Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- Education -->
+                            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 about-card">
+                                <h4 class="text-lg font-semibold text-primary flex items-center gap-2 mb-4">
+                                    <i class="fas fa-user-graduate"></i> Education
+                                </h4>
+                                <div class="space-y-1">
+                                    <div class="font-semibold text-white">Comsats University Islamabad</div>
+                                    <div class="text-gray-300 text-sm">Bachelor of Science in Computer Science</div>
+                                    <div class="text-gray-500 text-sm">Sep 2021 - Jul 2025</div>
+                                    <p class="text-gray-400 text-sm mt-2">Relevant coursework: Fundamental Programming, Data Structures and Algorithms, OOP, Database. CGPA: 3.49</p>
+                                </div>
+                            </div>
+
+                            <!-- Experience -->
+                            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 about-card">
+                                <h4 class="text-lg font-semibold text-primary flex items-center gap-2 mb-4">
+                                    <i class="fas fa-briefcase"></i> Experience
+                                </h4>
+                                <div class="space-y-4">
+                                    <div>
+                                        <div class="font-semibold text-white">Elevvo Pathways - Frontend Developer Intern</div>
+                                        <div class="text-gray-500 text-sm">Remote | Jul 2025 – Aug 2025</div>
+                                        <p class="text-gray-400 text-sm mt-1">Developed and maintained responsive user interfaces using HTML, CSS, JavaScript, and React.js.</p>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-white">Ebryx Pvt - Junior Software Engineer</div>
+                                        <div class="text-gray-500 text-sm">Onsite | Sep 2025 – Oct 2025</div>
+                                        <p class="text-gray-400 text-sm mt-1">Worked on system-level programming using C, C++, and CMake, focusing on efficient code structure and build automation.</p>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-white">Visionary Computer Solutions - Associate Software Engineer</div>
+                                        <div class="text-gray-500 text-sm">Onsite | Oct 2025 – Present</div>
+                                        <p class="text-gray-400 text-sm mt-1">Developing and maintaining web applications using ASP.NET MVC, C#, Angular, jQuery, and SQL Server.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Projects -->
+                            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 about-card">
+                                <h4 class="text-lg font-semibold text-primary flex items-center gap-2 mb-4">
+                                    <i class="fas fa-layer-group"></i> Projects
+                                </h4>
+                                <div class="space-y-4">
+                                    <div>
+                                        <div class="font-semibold text-white">Farm To Home <span class="bg-primary/20 text-primary text-xs px-2 py-0.5 rounded-full ml-2">FYP Project</span></div>
+                                        <p class="text-gray-400 text-sm mt-1">A web platform connecting farmers and consumers via central warehouses for fresh produce, dairy, and meat. Includes category-based browsing, invoice generation, order tracking, and a user-friendly UI.</p>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-white">Wayns Lamps</div>
+                                        <p class="text-gray-400 text-sm mt-1">A fully functional e-commerce web app for modern lamp products with responsive design and seamless user interaction.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Skills -->
+                            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 md:col-span-2 lg:col-span-1 about-card">
+                                <h4 class="text-lg font-semibold text-primary flex items-center gap-2 mb-4">
+                                    <i class="fas fa-code"></i> Skills
+                                </h4>
+                                <div class="space-y-4">
+                                    <div>
+                                        <h5 class="text-sm font-medium text-white mb-2">Programming Languages</h5>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">C#</span>
+                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">C++</span>
+                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">JavaScript</span>
+                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">SQL</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5 class="text-sm font-medium text-white mb-2">Web Technologies</h5>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">HTML5</span>
+                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">CSS3</span>
+                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">Bootstrap</span>
+                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">Tailwind CSS</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5 class="text-sm font-medium text-white mb-2">Frameworks & Libraries</h5>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">ASP.NET MVC</span>
+                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">ASP.NET Core</span>
+                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">Web API</span>
+                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">AngularJS</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5 class="text-sm font-medium text-white mb-2">Database</h5>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">MySQL</span>
+                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">SQL Server</span>
+                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">MongoDB</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5 class="text-sm font-medium text-white mb-2">Tools & IDEs</h5>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">Git</span>
+                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">Visual Studio</span>
+                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">VS Code</span>
+                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">SSMS</span>
+                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">Jira</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5 class="text-sm font-medium text-white mb-2">Soft Skills</h5>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">Communication</span>
+                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">Leadership</span>
+                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">Public Speaking</span>
+                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">Teamwork</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Personal Attributes -->
+                            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 about-card">
+                                <h4 class="text-lg font-semibold text-primary flex items-center gap-2 mb-4">
+                                    <i class="fas fa-seedling"></i> Personal Attributes
+                                </h4>
+                                <ul class="space-y-2 text-gray-400">
+                                    <li class="flex items-start gap-2">
+                                        <span class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                                        Adaptable and driven to learn in fast-paced environments.
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                                        Embrace challenges as opportunities for growth.
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                                        Continuously seek innovative ways to improve.
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Certifications -->
+                            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 about-card">
+                                <h4 class="text-lg font-semibold text-primary flex items-center gap-2 mb-4">
+                                    <i class="fas fa-certificate"></i> Certifications
+                                </h4>
+                                <ul class="space-y-2 text-gray-400">
+                                    <li class="flex items-start gap-2">
+                                        <span class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                                        C# and .NET Basics – Frontend Masters
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                                        Building APIs with C# and ASP.NET Core – Frontend Masters
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                                        Mastering Chrome Developer Tools (v4) – Frontend Masters
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Links -->
+                            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 about-card">
+                                <h4 class="text-lg font-semibold text-primary flex items-center gap-2 mb-4">
+                                    <i class="fas fa-link"></i> Links
+                                </h4>
+                                <div class="flex flex-col gap-2">
+                                    <a href="#home" class="text-gray-300 hover:text-primary transition-colors font-medium">Adnan's Portfolio</a>
+                                    <a href="https://github.com/Adnan-ZY" target="_blank" rel="noopener" class="text-gray-300 hover:text-primary transition-colors font-medium">GitHub: Adnan-ZY</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="social-connect">
-                    <h3>Connect With Me</h3>
-                    <div class="social-icons">
-                        <a href="https://wa.me/923440712340" class="social-icon" aria-label="WhatsApp">
+                <!-- Social Connect -->
+                <div class="text-center mt-8 md:mt-12">
+                    <h3 class="text-lg sm:text-xl font-semibold text-primary mb-4 sm:mb-6">Connect With Me</h3>
+                    <div class="flex justify-center gap-4 flex-wrap">
+                        <a href="https://wa.me/923440712340" class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white text-xl hover:bg-primary hover:-translate-y-1 transition-all" aria-label="WhatsApp">
                             <i class="fab fa-whatsapp"></i>
                         </a>
-                        <a href="https://www.instagram.com/zypher_he" class="social-icon" aria-label="Instagram">
+                        <a href="https://www.instagram.com/zypher_he" class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white text-xl hover:bg-primary hover:-translate-y-1 transition-all" aria-label="Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/muhammad-adnan-767776332?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BFUGiIGZxTSqYmWFLNKDhBQ%3D%3D" class="social-icon" aria-label="LinkedIn">
+                        <a href="https://www.linkedin.com/in/m-adnan" class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white text-xl hover:bg-primary hover:-translate-y-1 transition-all" aria-label="LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="https://github.com/Adnan-ZY" class="social-icon" aria-label="GitHub">
+                        <a href="https://github.com/Adnan-ZY" class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white text-xl hover:bg-primary hover:-translate-y-1 transition-all" aria-label="GitHub">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="#" class="social-icon" aria-label="Twitter">
+                        <a href="#" class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white text-xl hover:bg-primary hover:-translate-y-1 transition-all" aria-label="Twitter">
                             <i class="fab fa-twitter"></i>
                         </a>
                     </div>
@@ -170,355 +613,76 @@
             </div>
         </section>
 
-        <section id="contact" class="contact-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Get In <span class="highlight">Touch</span></h2>
-                    <p class="section-description">Have a project in mind or want to collaborate? Let's talk!</p>
+        <!-- Contact Section -->
+        <section id="contact" class="py-12 md:py-20">
+            <div class="max-w-6xl mx-auto px-3 sm:px-4">
+                <div class="text-center mb-8 md:mb-16">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-3">
+                        Get In <span class="text-primary font-bold">Touch</span>
+                    </h2>
+                    <p class="text-base sm:text-lg text-gray-500 max-w-xl mx-auto">Have a project in mind or want to collaborate? Let's talk!</p>
                 </div>
 
-                <div class="contact-grid">
-                    <div class="contact-info">
-                        <div class="contact-card">
-                            <div class="icon-container">
+                <div class="max-w-4xl mx-auto">
+                    <!-- Contact Info -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
+                        <div class="flex flex-col items-center text-center gap-3 sm:gap-4 bg-gradient-to-br from-dark-700 to-dark-600 p-5 sm:p-8 rounded-2xl shadow-xl hover:-translate-y-1 hover:bg-primary/10 transition-all card-bg">
+                            <div class="w-12 sm:w-14 h-12 sm:h-14 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xl sm:text-2xl flex-shrink-0 hover:bg-primary hover:text-white transition-all">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
-                            <div class="info-content">
-                                <h3>Location</h3>
-                                <p>Lahore, Pakistan</p>
+                            <div>
+                                <h3 class="text-lg font-semibold text-white mb-1">Location</h3>
+                                <p class="text-gray-400">Lahore, Pakistan</p>
                             </div>
                         </div>
 
-                        <div class="contact-card">
-                            <div class="icon-container">
+                        <div class="flex flex-col items-center text-center gap-3 sm:gap-4 bg-gradient-to-br from-dark-700 to-dark-600 p-5 sm:p-8 rounded-2xl shadow-xl hover:-translate-y-1 hover:bg-primary/10 transition-all card-bg">
+                            <div class="w-12 sm:w-14 h-12 sm:h-14 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xl sm:text-2xl flex-shrink-0 hover:bg-primary hover:text-white transition-all">
                                 <i class="fas fa-envelope"></i>
                             </div>
-                            <div class="info-content">
-                                <h3>Email</h3>
-                                <p>madnanhz42@gmail.com</p>
+                            <div>
+                                <h3 class="text-lg font-semibold text-white mb-1">Email</h3>
+                                <p class="text-gray-400">madnanhz42@gmail.com</p>
                             </div>
                         </div>
 
-                        <div class="contact-card">
-                            <div class="icon-container">
+                        <div class="flex flex-col items-center text-center gap-3 sm:gap-4 bg-gradient-to-br from-dark-700 to-dark-600 p-5 sm:p-8 rounded-2xl shadow-xl hover:-translate-y-1 hover:bg-primary/10 transition-all card-bg">
+                            <div class="w-12 sm:w-14 h-12 sm:h-14 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xl sm:text-2xl flex-shrink-0 hover:bg-primary hover:text-white transition-all">
                                 <i class="fas fa-phone-alt"></i>
                             </div>
-                            <div class="info-content">
-                                <h3>Phone</h3>
-                                <p>+923217078305</p>
+                            <div>
+                                <h3 class="text-lg font-semibold text-white mb-1">Phone</h3>
+                                <p class="text-gray-400">+923217078305</p>
                             </div>
-                        </div>
-
-                        <div class="social-links">
-                            <a href="https://wa.me/923440712340" class="social-icon" aria-label="WhatsApp">
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
-                            <a href="https://www.instagram.com/zypher_he" class="social-icon" aria-label="Instagram">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/muhammad-adnan-767776332?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BFUGiIGZxTSqYmWFLNKDhBQ%3D%3D" class="social-icon" aria-label="LinkedIn">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="https://github.com/Adnan-ZY" class="social-icon" aria-label="GitHub">
-                                <i class="fab fa-github"></i>
-                            </a>
                         </div>
                     </div>
 
-                    <div class="contact-form-container">
-                        <form id="contact-form" onsubmit="return validateForm()">
-                            <div class="form-header">
-                                <h3>Send Me a Message</h3>
-                            </div>
-
-                            <div id="error" class="error-message"></div>
-
-                            <div class="input-group">
-                                <div class="input-icon">
-                                    <i class="fas fa-user"></i>
-                                </div>
-                                <div class="input-field">
-                                    <input type="text" id="name" name="name" required>
-                                    <label for="name">Your Name</label>
-                                </div>
-                            </div>
-
-                            <div class="input-group">
-                                <div class="input-icon">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <div class="input-field">
-                                    <input type="email" id="email" name="email" required>
-                                    <label for="email">Your Email</label>
-                                </div>
-                            </div>
-
-                            <div class="input-group">
-                                <div class="input-icon">
-                                    <i class="fas fa-pen"></i>
-                                </div>
-                                <div class="input-field">
-                                    <textarea id="message" name="message" required></textarea>
-                                    <label for="message">Your Message</label>
-                                </div>
-                            </div>
-
-                            <button type="submit" id="c-btn">
-                                <span>Send Message</span>
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
-                        </form>
+                    <div class="flex gap-4 justify-center pt-4">
+                        <a href="https://wa.me/923440712340" class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white text-xl hover:bg-primary hover:-translate-y-1 transition-all" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://www.instagram.com/zypher_he" class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white text-xl hover:bg-primary hover:-translate-y-1 transition-all" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/m-adnan" class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white text-xl hover:bg-primary hover:-translate-y-1 transition-all" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/Adnan-ZY" class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white text-xl hover:bg-primary hover:-translate-y-1 transition-all" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <p>This Website belongs to Muhammad Adnan (FA21-BCS-037). All rights reserved. &copy; 2025</p>
+    <!-- Footer -->
+    <footer class="bg-dark-800 py-8 text-center border-t border-white/10">
+        <div class="max-w-6xl mx-auto px-4">
+            <p class="text-gray-400">This Website belongs to Muhammad Adnan . All rights reserved. &copy; 2025</p>
         </div>
     </footer>
 
-<script>
-    // --- 1. CONFIGURATION ---
-    const CSV_URL = 'assets/projects.csv';
-    const SLIDE_INTERVAL = 3000; // Time in milliseconds (3 seconds)
-
-    // --- 2. CSV PARSER ---
-    function parseCSV(csvText) {
-        const rows = [];
-        let currentRow = [];
-        let currentCell = '';
-        let inQuotes = false;
-
-        for (let i = 0; i < csvText.length; i++) {
-            const char = csvText[i];
-            const nextChar = csvText[i + 1];
-
-            if (char === '"') {
-                if (inQuotes && nextChar === '"') {
-                    currentCell += '"';
-                    i++;
-                } else {
-                    inQuotes = !inQuotes;
-                }
-            } else if (char === ',' && !inQuotes) {
-                currentRow.push(currentCell.trim());
-                currentCell = '';
-            } else if ((char === '\r' || char === '\n') && !inQuotes) {
-                if (currentCell || currentRow.length > 0) {
-                    currentRow.push(currentCell.trim());
-                    rows.push(currentRow);
-                }
-                currentRow = [];
-                currentCell = '';
-                if (char === '\r' && nextChar === '\n') i++;
-            } else {
-                currentCell += char;
-            }
-        }
-        if (currentCell || currentRow.length > 0) {
-            currentRow.push(currentCell.trim());
-            rows.push(currentRow);
-        }
-        return rows;
-    }
-
-    // --- 3. MAIN FETCH FUNCTION ---
-    async function fetchProjects() {
-        const container = document.getElementById('projects-container');
-        
-        try {
-            const response = await fetch(CSV_URL);
-            
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
-            const data = await response.text();
-            const rows = parseCSV(data);
-            const projects = rows.slice(1); // Remove header
-            
-            container.innerHTML = ''; 
-
-            projects.forEach((row, index) => {
-                if (row.length < 4) return;
-
-                const title = row[0];
-                const description = row[1];
-                const techStack = row[2] ? row[2].split(';').map(t => `<span>${t.trim()}</span>`).join('') : '';
-                const images = row[3] ? row[3].split(';') : [];
-
-                if (images.length === 0) return;
-
-                const sliderId = `slider-${index}`;
-                const dotsId = `dots-${index}`;
-                const progressId = `progress-${index}`;
-
-                let slidesHtml = '';
-                let dotsHtml = '';
-                
-                images.forEach((img, i) => {
-                    const cleanPath = img.trim();
-                    const activeClass = i === 0 ? 'active' : '';
-                    
-                    // Added inline styles for FULL RESPONSIVENESS
-                    slidesHtml += `<img src="${cleanPath}" 
-                                        alt="${title} Image ${i+1}" 
-                                        class="slide ${activeClass}" 
-                                        style="width: 100%; height: 100%; object-fit: cover; display: ${i===0 ? 'block' : 'none'};">`;
-                                        
-                    dotsHtml += `<span class="dot ${activeClass}" onclick="currentSlide('${sliderId}', ${i})"></span>`;
-                });
-
-                // NO BUTTONS in this HTML structure
-                const cardHtml = `
-                    <div class="project-card">
-                        <div class="project-info">
-                            <h3>${title}</h3>
-                            <p>${description}</p>
-                            <div class="tech-stack">${techStack}</div>
-                        </div>
-                        <div class="project-showcase">
-                            <div class="slider-container" style="position: relative; overflow: hidden; height: 100%; min-height: 300px;">
-                                <div class="slider-progress">
-                                    <div class="progress-bar" id="${progressId}" style="width: ${(1/images.length)*100}%"></div>
-                                </div>
-                                
-                                <div class="slider" id="${sliderId}" style="height: 100%;">
-                                    ${slidesHtml}
-                                </div>
-                                
-                                <div class="slider-dots" id="${dotsId}">
-                                    ${dotsHtml}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                
-                container.innerHTML += cardHtml;
-
-                // Start Auto-Slide for this specific project
-                if(images.length > 1) {
-                    setInterval(() => {
-                        slideImages(sliderId, 1);
-                    }, SLIDE_INTERVAL);
-                }
-            });
-
-        } catch (error) {
-            console.error('Error fetching projects:', error);
-            container.innerHTML = '<p style="text-align:center; color:red;">Failed to load projects. Ensure "assets/projects.csv" exists.</p>';
-        }
-    }
-
-    // --- 4. SLIDER LOGIC (Modified for Auto-play & Styling) ---
-    window.slideImages = function(sliderId, direction) {
-        const slider = document.getElementById(sliderId);
-        if(!slider) return;
-        
-        const slides = slider.querySelectorAll('.slide');
-        const dotsId = sliderId.replace('slider', 'dots');
-        const dots = document.getElementById(dotsId).querySelectorAll('.dot');
-        
-        let currentSlide = 0;
-        // Find current active index
-        slides.forEach((slide, index) => {
-            if (slide.classList.contains('active') || slide.style.display === 'block') {
-                currentSlide = index;
-            }
-        });
-
-        // Hide current
-        slides[currentSlide].classList.remove('active');
-        slides[currentSlide].style.display = 'none';
-        if(dots[currentSlide]) dots[currentSlide].classList.remove('active');
-
-        // Calculate next
-        currentSlide += direction;
-        if (currentSlide >= slides.length) currentSlide = 0;
-        if (currentSlide < 0) currentSlide = slides.length - 1;
-
-        // Show next
-        slides[currentSlide].classList.add('active');
-        slides[currentSlide].style.display = 'block';
-        if(dots[currentSlide]) dots[currentSlide].classList.add('active');
-
-        // Update progress bar
-        const progressId = sliderId.replace('slider', 'progress');
-        const progressBar = document.getElementById(progressId);
-        if(progressBar) {
-            progressBar.style.width = ((currentSlide + 1) / slides.length) * 100 + '%';
-        }
-    }
-
-    // Allow clicking dots manually
-    window.currentSlide = function(sliderId, slideIndex) {
-        const slider = document.getElementById(sliderId);
-        const slides = slider.querySelectorAll('.slide');
-        const dotsId = sliderId.replace('slider', 'dots');
-        const dots = document.getElementById(dotsId).querySelectorAll('.dot');
-
-        slides.forEach(slide => {
-            slide.classList.remove('active');
-            slide.style.display = 'none';
-        });
-        dots.forEach(dot => dot.classList.remove('active'));
-
-        slides[slideIndex].classList.add('active');
-        slides[slideIndex].style.display = 'block';
-        dots[slideIndex].classList.add('active');
-
-        const progressId = sliderId.replace('slider', 'progress');
-        const progressBar = document.getElementById(progressId);
-        if(progressBar) {
-            progressBar.style.width = ((slideIndex + 1) / slides.length) * 100 + '%';
-        }
-    }
-
-    // --- 5. INITIALIZATION ---
-    document.addEventListener('DOMContentLoaded', function() {
-        // Init Typewriter
-        const changingWord = document.getElementById('changing-word');
-        if (changingWord) {
-             // Simple fallback or reuse your class if preferred
-             const words = ['Interactive UI', 'Full-Stack Solutions', 'Dynamic Dashboards'];
-             let i = 0, j = 0, isDeleting = false;
-             function type() {
-                 const current = i % words.length;
-                 const fullTxt = words[current];
-                 if (isDeleting) {
-                     changingWord.innerHTML = fullTxt.substring(0, j--);
-                     if (j < 0) { isDeleting = false; i++; j = 0; }
-                 } else {
-                     changingWord.innerHTML = fullTxt.substring(0, j++);
-                     if (j > fullTxt.length) { isDeleting = true; setTimeout(type, 2000); return; }
-                 }
-                 setTimeout(type, isDeleting ? 100 : 200);
-             }
-             type();
-        }
-
-        // Fetch Projects
-        fetchProjects();
-
-        // Input Animations & Mobile Menu
-        document.querySelectorAll('.input-field input, .input-field textarea').forEach(input => {
-            input.addEventListener('focus', function() { this.parentElement.classList.add('focused'); });
-            input.addEventListener('blur', function() { if (!this.value) this.parentElement.classList.remove('focused'); });
-        });
-        
-        // Utilities
-        window.toggleMenu = function() {
-            document.getElementById('nav-links').classList.toggle('active');
-            document.querySelector('.hamburger').classList.toggle('active');
-        }
-        
-        document.getElementById('theme-toggle-button')?.addEventListener('click', function() {
-            document.body.classList.toggle('light-mode');
-        });
-    });
-</script>
+<script src="assets/js/script.js"></script>
 </body>
 </html>
-

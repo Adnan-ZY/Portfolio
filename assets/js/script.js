@@ -1,191 +1,183 @@
-        const toggleButton = document.getElementById('theme-toggle-button');
-        const body = document.body;
+// --- 1. CONFIGURATION ---
+const CSV_URL = 'assets/projects.csv';
 
-        toggleButton.addEventListener('click', () => {
-            body.classList.toggle('light-mode');
-        });
+// --- 2. CSV PARSER ---
+function parseCSV(csvText) {
+    const rows = [];
+    let currentRow = [];
+    let currentCell = '';
+    let inQuotes = false;
 
-        function validateForm() {
-            var name = document.getElementById('name').value;
-            var email = document.getElementById('email').value;
-            var message = document.getElementById('message').value;
-            var error = document.getElementById('error');
-            var text = "";
+    for (let i = 0; i < csvText.length; i++) {
+        const char = csvText[i];
+        const nextChar = csvText[i + 1];
 
-            error.style.padding = "10px";
-
-            if (name.length < 5) {
-                text = "Please enter a valid name (at least 5 characters).";
-                error.innerHTML = text;
-                showErrorAnimation();
-                return false;
-            }
-
-            if (email.indexOf("@") == -1 || email.length < 6) {
-                text = "Please enter a valid email.";
-                error.innerHTML = text;
-                showErrorAnimation();
-                return false;
-            }
-
-            if (message.length <= 140) {
-                text = "Please enter more than 140 characters in the message.";
-                error.innerHTML = text;
-                showErrorAnimation();
-                return false;
-            }
-
-
-            error.style.backgroundColor = "rgba(46, 204, 113, 0.2)";
-            error.style.color = "#2ecc71";
-            error.innerHTML = "Message sent successfully!";
-
-            setTimeout(() => {
-                document.getElementById('contact-form').reset();
-                error.innerHTML = "";
-                error.style.padding = "0";
-                error.style.backgroundColor = "transparent";
-            }, 2000);
-
-            return false;
-        }
-
-        function showErrorAnimation() {
-            const form = document.getElementById('contact-form');
-            form.classList.add('shake');
-            setTimeout(() => {
-                form.classList.remove('shake');
-            }, 500);
-        }
-
-        function slideImages(sliderId, direction) {
-            let slider = document.getElementById(sliderId);
-            let slides = slider.getElementsByClassName("slide");
-            let dots = document.getElementById(sliderId.replace('slider', 'dots')).getElementsByClassName("dot");
-            let progressBar = document.getElementById(sliderId.replace('slider', 'progress'));
-
-            let activeIndex = Array.from(slides).findIndex(slide => slide.classList.contains("active"));
-
-            slides[activeIndex].classList.remove("active");
-            dots[activeIndex].classList.remove("active");
-
-            let nextIndex = (activeIndex + direction + slides.length) % slides.length;
-            slides[nextIndex].classList.add("active");
-            dots[nextIndex].classList.add("active");
-
-            let progress = ((nextIndex + 1) / slides.length) * 100;
-            progressBar.style.width = progress + "%";
-        }
-
-        function currentSlide(sliderId, index) {
-            let slider = document.getElementById(sliderId);
-            let slides = slider.getElementsByClassName("slide");
-            let dots = document.getElementById(sliderId.replace('slider', 'dots')).getElementsByClassName("dot");
-            let progressBar = document.getElementById(sliderId.replace('slider', 'progress'));
-
-
-            Array.from(slides).forEach(slide => slide.classList.remove("active"));
-            Array.from(dots).forEach(dot => dot.classList.remove("active"));
-
-            t
-            slides[index].classList.add("active");
-            dots[index].classList.add("active");
-
-
-            let progress = ((index + 1) / slides.length) * 100;
-            progressBar.style.width = progress + "%";
-        }
-
-        document.addEventListener("DOMContentLoaded", function () {
-            let navLinks = document.querySelectorAll("nav a");
-
-            navLinks.forEach(link => {
-                link.addEventListener("click", function () {
-                    navLinks.forEach(nav => nav.classList.remove("active"));
-                    this.classList.add("active");
-                });
-            });
-
-
-            document.getElementById('wayns-progress').style.width = (1 / document.getElementById('wayns-slider').getElementsByClassName("slide").length) * 100 + "%";
-            document.getElementById('rolex-progress').style.width = (1 / document.getElementById('rolex-slider').getElementsByClassName("slide").length) * 100 + "%";
-
-
-            const formInputs = document.querySelectorAll('#contact-form input, #contact-form textarea');
-
-            formInputs.forEach(input => {
-
-                if (input.value.trim() !== '') {
-                    input.classList.add('has-value');
-                }
-
-                input.addEventListener('focus', function () {
-                    this.parentElement.classList.add('focused');
-                });
-
-                input.addEventListener('blur', function () {
-                    this.parentElement.classList.remove('focused');
-                    if (this.value.trim() !== '') {
-                        this.classList.add('has-value');
-                    } else {
-                        this.classList.remove('has-value');
-                    }
-                });
-            });
-
-
-            const skillBars = document.querySelectorAll('.skill-progress');
-            
-            function checkScroll() {
-                skillBars.forEach(bar => {
-                    const sectionPos = document.getElementById('about').getBoundingClientRect();
-                    if (sectionPos.top < window.innerHeight && sectionPos.bottom >= 0) {
-                        bar.style.width = bar.parentElement.getAttribute('data-width');
-                    }
-                });
-            }
-
-
-            skillBars.forEach(bar => {
-                const width = bar.style.width;
-                bar.parentElement.setAttribute('data-width', width);
-                bar.style.width = '0';
-            });
-            window.addEventListener('scroll', checkScroll);
-            setTimeout(checkScroll, 500);
-        });
-        const words = ["Capture", "Innovate", "Inspire", "Design", "Build"];
-        const changingWord = document.getElementById("changing-word");
-
-        let wordIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-
-        function typeEffect() {
-            const currentWord = words[wordIndex];
-            const currentText = currentWord.substring(0, charIndex);
-
-            changingWord.textContent = currentText;
-
-            if (!isDeleting && charIndex < currentWord.length) {
-                charIndex++;
-                setTimeout(typeEffect, 150);
-            } else if (isDeleting && charIndex > 0) {
-                charIndex--;
-                setTimeout(typeEffect, 100);
+        if (char === '"') {
+            if (inQuotes && nextChar === '"') {
+                currentCell += '"';
+                i++;
             } else {
-                isDeleting = !isDeleting;
-                if (!isDeleting) {
-                    wordIndex = (wordIndex + 1) % words.length;
-                }
-                setTimeout(typeEffect, 1000);
+                inQuotes = !inQuotes;
             }
+        } else if (char === ',' && !inQuotes) {
+            currentRow.push(currentCell.trim());
+            currentCell = '';
+        } else if ((char === '\r' || char === '\n') && !inQuotes) {
+            if (currentCell || currentRow.length > 0) {
+                currentRow.push(currentCell.trim());
+                rows.push(currentRow);
+            }
+            currentRow = [];
+            currentCell = '';
+            if (char === '\r' && nextChar === '\n') i++;
+        } else {
+            currentCell += char;
         }
+    }
+    if (currentCell || currentRow.length > 0) {
+        currentRow.push(currentCell.trim());
+        rows.push(currentRow);
+    }
+    return rows;
+}
 
-        typeEffect();
+// --- 3. MAIN FETCH FUNCTION ---
+async function fetchProjects() {
+    const slidesContainer = document.getElementById('project-slides');
+    
+    try {
+        const response = await fetch(CSV_URL);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
+        const data = await response.text();
+        const rows = parseCSV(data);
+        const projects = rows.slice(1);
+        
+        let slidesHtml = '';
 
-        function toggleMenu() {
-            const navLinks = document.getElementById("nav-links");
-            navLinks.classList.toggle("show");
+        projects.forEach((row) => {
+            if (row.length < 6) return;
+            const images = row[5] ? row[5].split(';') : [];
+            
+            images.forEach((img) => {
+                const cleanPath = img.trim();
+                if (cleanPath) {
+                    slidesHtml += `<div class="swiper-slide w-full aspect-video max-h-[600px] max-w-4xl rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:scale-105"><img src="${cleanPath}" loading="lazy" alt="Project Image" class="w-full h-full object-cover"></div>`;
+                }
+            });
+        });
+        
+        slidesContainer.innerHTML = slidesHtml;
+
+        // Initialize Swiper
+        new Swiper('.projectSwiper', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            loop: true,
+            speed: 800,
+            coverflowEffect: {
+                rotate: 0,
+                stretch: 80,
+                depth: 200,
+                modifier: 1,
+                slideShadows: false,
+            },
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
+        });
+
+    } catch (error) {
+        console.error('Error fetching projects:', error);
+        slidesContainer.innerHTML = '<div class="swiper-slide text-center text-red-500 flex items-center justify-center">Failed to load projects.</div>';
+    }
+}
+
+// --- 4. INITIALIZATION ---
+document.addEventListener('DOMContentLoaded', function() {
+    // Typewriter effect
+    const changingWord = document.getElementById('changing-word');
+    if (changingWord) {
+        const words = ['Software Engineer', 'Full-Stack Dev', 'Problem Solver', 'Web Developer'];
+        let i = 0, j = 0, isDeleting = false;
+        function type() {
+            const current = i % words.length;
+            const fullTxt = words[current];
+            if (isDeleting) {
+                changingWord.innerHTML = fullTxt.substring(0, j--);
+                if (j < 0) { isDeleting = false; i++; j = 0; }
+            } else {
+                changingWord.innerHTML = fullTxt.substring(0, j++);
+                if (j > fullTxt.length) { isDeleting = true; setTimeout(type, 2000); return; }
+            }
+            setTimeout(type, isDeleting ? 80 : 150);
         }
+        type();
+    }
+
+    // Fetch and display projects
+    fetchProjects();
+
+    // Input field focus effects
+    document.querySelectorAll('.input-field input, .input-field textarea').forEach(input => {
+        input.addEventListener('focus', function() { this.parentElement.classList.add('focused'); });
+        input.addEventListener('blur', function() { if (!this.value) this.parentElement.classList.remove('focused'); });
+    });
+    
+    // Mobile menu toggle
+    window.toggleMenu = function() {
+        document.getElementById('nav-links').classList.toggle('active');
+        document.querySelector('.hamburger').classList.toggle('active');
+    }
+    
+    // Close menu when clicking a link (mobile)
+    window.closeMenuOnClick = function() {
+        if (window.innerWidth < 768) {
+            document.getElementById('nav-links').classList.remove('active');
+            document.querySelector('.hamburger').classList.remove('active');
+        }
+    }
+    
+    // Active nav link based on scroll (scroll spy)
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    function updateActiveNav() {
+        const scrollPos = window.scrollY + 100;
+        sections.forEach(section => {
+            const top = section.offsetTop;
+            const height = section.offsetHeight;
+            const id = section.getAttribute('id');
+            
+            if (scrollPos >= top && scrollPos < top + height) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + id) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', updateActiveNav);
+    updateActiveNav();
+    
+    // Theme toggle
+    const themeBtn = document.getElementById('theme-toggle-button');
+    if (themeBtn) {
+        themeBtn.addEventListener('click', function() {
+            document.body.classList.toggle('light-mode');
+            document.documentElement.classList.toggle('light-mode');
+            if (document.body.classList.contains('light-mode')) {
+                this.textContent = 'Dark';
+            } else {
+                this.textContent = 'Light';
+            }
+        });
+    }
+});
