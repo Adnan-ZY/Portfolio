@@ -99,26 +99,7 @@ async function fetchProjects() {
 
 // --- 4. INITIALIZATION ---
 document.addEventListener('DOMContentLoaded', function() {
-    // Typewriter effect
-    const changingWord = document.getElementById('changing-word');
-    if (changingWord) {
-        const words = ['Software Engineer', 'Full-Stack Dev', 'Problem Solver', 'Web Developer'];
-        let i = 0, j = 0, isDeleting = false;
-        function type() {
-            const current = i % words.length;
-            const fullTxt = words[current];
-            if (isDeleting) {
-                changingWord.innerHTML = fullTxt.substring(0, j--);
-                if (j < 0) { isDeleting = false; i++; j = 0; }
-            } else {
-                changingWord.innerHTML = fullTxt.substring(0, j++);
-                if (j > fullTxt.length) { isDeleting = true; setTimeout(type, 2000); return; }
-            }
-            setTimeout(type, isDeleting ? 80 : 150);
-        }
-        type();
-    }
-
+    
     // Fetch and display projects
     fetchProjects();
 
