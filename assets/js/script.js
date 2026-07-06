@@ -89,10 +89,6 @@ async function fetchProjects() {
                 disableOnInteraction: false,
                 pauseOnMouseEnter: true,
             },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
         });
 
     } catch (error) {
@@ -152,115 +148,20 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', updateActiveNav);
     updateActiveNav();
     
-    // Theme toggle (with persistence)
+    // Theme toggle
     const themeBtn = document.getElementById('theme-toggle-button');
-
-    function applyTheme(isLight) {
-        document.body.classList.toggle('light-mode', isLight);
-        document.documentElement.classList.toggle('light-mode', isLight);
-        if (themeBtn) {
-            const icon = themeBtn.querySelector('i');
-            if (icon) {
-                icon.classList.toggle('fa-sun', isLight);
-                icon.classList.toggle('fa-moon', !isLight);
-            }
-        }
-    }
-
-    // Restore saved preference
-    try {
-        if (localStorage.getItem('theme') === 'light') applyTheme(true);
-    } catch (e) { /* storage unavailable */ }
-
     if (themeBtn) {
         themeBtn.addEventListener('click', function() {
-            const isLight = !document.body.classList.contains('light-mode');
-            applyTheme(isLight);
-            try { localStorage.setItem('theme', isLight ? 'light' : 'dark'); } catch (e) {}
-        });
-    }
-
-    // Scroll progress bar
-    const progress = document.getElementById('scroll-progress');
-    // Back to top button
-    const backToTop = document.getElementById('back-to-top');
-    if (backToTop) {
-        backToTop.addEventListener('click', function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
-
-    function onScrollUi() {
-        const scrollTop = window.scrollY || document.documentElement.scrollTop;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-        if (progress) progress.style.width = pct + '%';
-        if (backToTop) backToTop.classList.toggle('show', scrollTop > 400);
-    }
-    window.addEventListener('scroll', onScrollUi, { passive: true });
-    onScrollUi();
-
-    // Scroll reveal via IntersectionObserver
-    const revealEls = document.querySelectorAll('.reveal');
-    if ('IntersectionObserver' in window && revealEls.length) {
-        const revealObserver = new IntersectionObserver((entries, obs) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    obs.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.12 });
-        revealEls.forEach(el => revealObserver.observe(el));
-    } else {
-        revealEls.forEach(el => el.classList.add('visible'));
-    }
-
-    // Animated stat counters
-    const counters = document.querySelectorAll('[data-count]');
-    if ('IntersectionObserver' in window && counters.length) {
-        const countObserver = new IntersectionObserver((entries, obs) => {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-                const el = entry.target;
-                const target = parseInt(el.getAttribute('data-count'), 10) || 0;
-                const suffix = el.getAttribute('data-suffix') || '';
-                const duration = 1400;
-                const start = performance.now();
-                function tick(now) {
-                    const p = Math.min((now - start) / duration, 1);
-                    const eased = 1 - Math.pow(1 - p, 3);
-                    el.textContent = Math.round(target * eased) + suffix;
-                    if (p < 1) requestAnimationFrame(tick);
-                }
-                requestAnimationFrame(tick);
-                obs.unobserve(el);
-            });
-        }, { threshold: 0.5 });
-        counters.forEach(c => countObserver.observe(c));
-    }
-
-    // Role typewriter effect
-    const roleEl = document.getElementById('role-typer');
-    if (roleEl && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        const roles = ['Software Engineer', '.NET Developer', 'Angular Developer', 'Full-Stack Developer'];
-        let roleIdx = 0, charIdx = 0, deleting = false;
-        function typeRole() {
-            const current = roles[roleIdx];
-            if (deleting) {
-                charIdx--;
+            document.body.classList.toggle('light-mode');
+            document.documentElement.classList.toggle('light-mode');
+            const icon = this.querySelector('i');
+            if (document.body.classList.contains('light-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
             } else {
-                charIdx++;
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
             }
-            roleEl.textContent = current.substring(0, charIdx);
-            let delay = deleting ? 45 : 90;
-            if (!deleting && charIdx === current.length) {
-                delay = 1600; deleting = true;
-            } else if (deleting && charIdx === 0) {
-                deleting = false; roleIdx = (roleIdx + 1) % roles.length; delay = 400;
-            }
-            setTimeout(typeRole, delay);
-        }
-        setTimeout(typeRole, 1200);
+        });
     }
 });
