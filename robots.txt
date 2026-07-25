@@ -4,5 +4,4 @@
 User-agent: *
 Allow: /
 
-# Sitemap location
 Sitemap: https://adnan-zy.github.io/Portfolio/sitemap.xml

@@ -1,693 +1,467 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Adnan | Software Engineer Portfolio | Adnan-ZY</title>
-    <meta name="description" content="Muhammad Adnan (M Adnan, Adnan-ZY) - Software Engineer skilled in .NET, C#, Angular, SQL Server, ASP.NET MVC. Full-stack web developer building clean, efficient applications.">
-    <meta name="keywords" content="Muhammad Adnan, M Adnan, Adnan-ZY, .NET developer, C# developer, Angular developer, software engineer, full stack developer, web developer, ASP.NET MVC, SQL Server, Pakistan developer, Lahore developer, portfolio">
+    <title>Muhammad Adnan | Software Engineer</title>
+    <meta name="description" content="Muhammad Adnan (Adnan-ZY), Software Engineer building reliable web applications with .NET, C#, Web API, Angular and SQL Server. Selected work, experience and contact.">
+    <meta name="keywords" content="Muhammad Adnan, M Adnan, Adnan-ZY, .NET developer, C# developer, Web API, Angular developer, software engineer, full stack developer, ASP.NET MVC, SQL Server, Electron js, Lahore developer, portfolio">
     <meta name="author" content="Muhammad Adnan">
     <meta name="robots" content="index, follow">
-    <meta name="google-site-verification" content="KY8gsSitDgQM9fUw-K2WzcefPOC2mg3vZOupHmnZQhk" />
+    <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0b0b0c" media="(prefers-color-scheme: dark)">
+    <meta name="google-site-verification" content="KY8gsSitDgQM9fUw-K2WzcefPOC2mg3vZOupHmnZQhk">
     <link rel="canonical" href="https://adnan-zy.github.io/Portfolio/">
-    
-    <!-- Open Graph / Social Media -->
+
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://adnan-zy.github.io/Portfolio/">
-    <meta property="og:title" content="Muhammad Adnan | Software Engineer Portfolio">
-    <meta property="og:description" content="Software Engineer skilled in .NET, C#, Angular, SQL Server. Building clean, efficient web applications.">
+    <meta property="og:title" content="Muhammad Adnan | Software Engineer">
+    <meta property="og:description" content="Software Engineer building reliable web applications with .NET, C#, Web API, Angular and SQL Server.">
     <meta property="og:image" content="https://adnan-zy.github.io/Portfolio/assets/images/og-image.png">
-    
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Muhammad Adnan | Software Engineer Portfolio">
-    <meta name="twitter:description" content="Software Engineer skilled in .NET, C#, Angular, SQL Server. Building clean, efficient web applications.">
-    
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23cf3fa4'/%3E%3Ctext x='50' y='70' font-size='60' font-family='monospace' font-weight='bold' fill='white' text-anchor='middle'%3E%26lt;/%26gt;%3C/text%3E%3C/svg%3E">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#cf3fa4',
-                        'primary-dark': '#9b2c7a',
-                        dark: {
-                            900: '#000000',
-                            800: '#111111',
-                            700: '#121212',
-                            600: '#1a1a1a',
-                        }
-                    },
-                    fontFamily: {
-                        poppins: ['Poppins', 'sans-serif'],
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 1.5s ease-in-out',
-                        'pulse-glow': 'pulse 2s infinite',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(30px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        /* Custom styles that are hard to do with Tailwind */
-        body { font-family: 'Poppins', sans-serif; }
-        
-        .highlight::after {
-            content: "|";
-            animation: smooth-blink 1s infinite ease-in-out;
-            margin-left: 0.25rem;
-            font-weight: 100;
-        }
-        
-        @keyframes smooth-blink {
-            0% { opacity: 1; }
-            50% { opacity: 0.3; }
-            100% { opacity: 1; }
-        }
-        
-        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-        .hamburger.active span:nth-child(2) { opacity: 0; }
-        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
-        
-        /* Mobile Menu Styles */
-        @media (max-width: 767px) {
-            .nav-menu.active {
-                display: flex !important;
-                position: fixed;
-                top: 56px;
-                left: 0;
-                width: 100%;
-                height: calc(100vh - 56px);
-                background: #1a1a1a;
-                backdrop-filter: blur(10px);
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
-                gap: 2rem;
-                padding-top: 3rem;
-                z-index: 100;
-            }
-        }
-        
-        /* Active nav link underline */
-        .nav-link.active { color: #cf3fa4 !important; }
-        .nav-link.active::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            max-width: 50px;
-            height: 2px;
-            background-color: #cf3fa4;
-            border-radius: 2px;
-        }
-        @media (min-width: 768px) {
-            .nav-link.active::after {
-                left: 0;
-                transform: none;
-                width: 100%;
-                max-width: none;
-            }
-        }
-        
-        .input-field.focused label,
-        .input-field input:focus ~ label,
-        .input-field textarea:focus ~ label {
-            top: -10px;
-            left: 10px;
-            font-size: 0.8rem;
-            color: #cf3fa4;
-            background: #121212;
-            padding: 0 5px;
-        }
-        
-        /* Light Mode - Full App Styles */
-        .light-mode { background: #f8f9fa !important; color: #333 !important; }
-        .light-mode .nav-bg { background: rgba(255,255,255,0.95) !important; border-bottom: 1px solid #e0e0e0; }
-        .light-mode .nav-menu { background: #ffffff !important; }
-        .light-mode .nav-link { color: #333 !important; }
-        .light-mode .nav-link:hover, .light-mode .nav-link.active { color: #cf3fa4 !important; }
-        .light-mode .hamburger span { background: #333 !important; }
-        .light-mode .text-white { color: #222 !important; }
-        .light-mode .text-gray-400, .light-mode .text-gray-500 { color: #666 !important; }
-        .light-mode .text-gray-300 { color: #555 !important; }
-        .light-mode .card-bg { background: linear-gradient(145deg, #ffffff, #f0f0f0) !important; box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important; }
-        .light-mode .about-card, .light-mode .bg-white\/5 { background: #fff !important; border-color: #e0e0e0 !important; }
-        .light-mode .bg-gradient-to-br { background: linear-gradient(145deg, #fff, #f5f5f5) !important; }
-        .light-mode .bg-dark-700, .light-mode .bg-dark-600, .light-mode .bg-dark-800 { background: #f5f5f5 !important; }
-        .light-mode .border-white\/10 { border-color: #e0e0e0 !important; }
-        .light-mode .border-white\/5 { border-color: #eee !important; }
-        .light-mode .input-field.focused label { background: #fff !important; }
-        .light-mode input, .light-mode textarea { background: #fff !important; border-color: #ddd !important; color: #333 !important; }
-        .light-mode input:focus, .light-mode textarea:focus { border-color: #cf3fa4 !important; background: #fdf5fa !important; }
-        .light-mode .peer-focus\:bg-dark-700 { background: #fff !important; }
-        .light-mode footer { background: #f0f0f0 !important; border-color: #ddd !important; }
-        .light-mode .bg-white\/5 { background: rgba(0,0,0,0.02) !important; }
-        .light-mode .shadow-xl, .light-mode .shadow-2xl { box-shadow: 0 10px 40px rgba(0,0,0,0.08) !important; }
-        .light-mode .from-dark-700\/95, .light-mode .to-dark-600\/95 { background: linear-gradient(145deg, #fff, #f8f8f8) !important; }
-        .light-mode .project-card { background: linear-gradient(145deg, #fff, #f5f5f5) !important; border: 1px solid #e5e5e5 !important; }
-        .light-mode .skill-card { background: rgba(0,0,0,0.02) !important; border-color: #e0e0e0 !important; }
-        .light-mode .skill-card:hover { background: rgba(207,63,164,0.08) !important; border-color: rgba(207,63,164,0.5) !important; }
-        
-        /* Skill card animations */
-        .skill-card {
-            animation: fadeInUp 0.6s ease-out forwards;
-            opacity: 0;
-        }
-        .skill-card:nth-child(1) { animation-delay: 0.05s; }
-        .skill-card:nth-child(2) { animation-delay: 0.1s; }
-        .skill-card:nth-child(3) { animation-delay: 0.15s; }
-        .skill-card:nth-child(4) { animation-delay: 0.2s; }
-        .skill-card:nth-child(5) { animation-delay: 0.25s; }
-        .skill-card:nth-child(6) { animation-delay: 0.3s; }
-        .skill-card:nth-child(7) { animation-delay: 0.35s; }
-        .skill-card:nth-child(8) { animation-delay: 0.4s; }
-        .skill-card:nth-child(9) { animation-delay: 0.45s; }
-        .skill-card:nth-child(10) { animation-delay: 0.5s; }
-        .skill-card:nth-child(11) { animation-delay: 0.55s; }
-        .skill-card:nth-child(12) { animation-delay: 0.6s; }
-        
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* Slider styles */
-        .slide { display: none; }
-        .slide.active { display: block; animation: fadeIn 0.5s ease; }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* Swiper Depth Slider */
-        .slider-depth {
-            position: relative;
-            background: #000000 !important;
-        }
-        .light-mode .slider-depth {
-            background: #ffffff !important;
-            color: #0f172a;
-        }
-        .projectSwiper {
-            perspective: 1400px;
-        }
-        .projectSwiper .swiper-wrapper {
-            padding: 1rem 0 3.5rem;
-            display: flex;
-            flex-direction: row;
-        }
-        .projectSwiper .swiper-slide {
-            width: 100%;
-            max-width: 56rem;
-            aspect-ratio: 16 / 9;
-            max-height: 600px;
-            opacity: 0.35;
-            transform-style: preserve-3d;
-            transition: all 0.5s cubic-bezier(0.22, 0.9, 0.36, 1);
-            filter: saturate(0.7);
-            border-radius: 1rem;
-            overflow: hidden;
-            flex-shrink: 0;
-        }
-        .projectSwiper .swiper-slide:hover {
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            transform: scale(1.05);
-        }
-        @media (min-width: 640px) {
-            .projectSwiper .swiper-slide { width: 90%; }
-        }
-        @media (min-width: 768px) {
-            .projectSwiper .swiper-slide { width: 80%; }
-        }
-        .projectSwiper .swiper-slide-prev,
-        .projectSwiper .swiper-slide-next {
-            opacity: 0.6;
-            transform: translateZ(-80px) scale(0.9);
-            filter: saturate(0.9);
-        }
-        .projectSwiper .swiper-slide-active {
-            opacity: 1;
-            transform: translateZ(140px) scale(1);
-            filter: saturate(1.05);
-        }
-        .projectSwiper .swiper-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: contrast(1.05) saturate(1.05);
-        }
-    </style>
-</head>
-<body class="bg-black text-white leading-relaxed overflow-x-hidden animate-fade-in">
-    <!-- Header -->
-    <header>
-        <nav class="fixed top-0 left-0 right-0 bg-dark-600/95 backdrop-blur-md z-50 py-3 nav-bg">
-            <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
-                <!-- Logo -->
-                <div class="text-2xl font-bold">
-                    <span class="text-primary font-bold">M</span>A
-                </div>
-                
-                <div class="hamburger flex flex-col cursor-pointer gap-1 z-[110] md:hidden" onclick="toggleMenu()">
-                    <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
-                    <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
-                    <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
-                </div>
+    <meta name="twitter:title" content="Muhammad Adnan | Software Engineer">
+    <meta name="twitter:description" content="Software Engineer building reliable web applications with .NET, C#, Web API, Angular and SQL Server.">
 
-                <ul id="nav-links" class="nav-menu hidden md:flex md:relative md:top-0 md:left-0 md:w-auto md:h-auto md:bg-transparent md:backdrop-blur-none md:flex-row md:justify-end md:items-center md:gap-8 md:pt-0 list-none">
-                    <li class="w-full md:w-auto text-center"><a href="#home" class="nav-link text-white hover:text-primary transition-colors font-medium text-xl md:text-base py-4 md:py-2 block relative" onclick="closeMenuOnClick()">Home</a></li>
-                    <li class="w-full md:w-auto text-center"><a href="#projects" class="nav-link text-white hover:text-primary transition-colors font-medium text-xl md:text-base py-4 md:py-2 block relative" onclick="closeMenuOnClick()">Projects</a></li>
-                    <li class="w-full md:w-auto text-center"><a href="#about" class="nav-link text-white hover:text-primary transition-colors font-medium text-xl md:text-base py-4 md:py-2 block relative" onclick="closeMenuOnClick()">About</a></li>
-                    <li class="w-full md:w-auto text-center"><a href="#contact" class="nav-link text-white hover:text-primary transition-colors font-medium text-xl md:text-base py-4 md:py-2 block relative" onclick="closeMenuOnClick()">Contact</a></li>
-                    <li class="w-full md:w-auto text-center"><button id="theme-toggle-button" class="nav-link text-white hover:text-primary transition-colors font-medium text-xl md:text-base py-4 md:py-2 block mx-auto"><i class="fas fa-moon"></i></button></li>
-                </ul>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23101012'/%3E%3Ctext x='50' y='68' font-size='46' font-family='Helvetica,Arial' font-weight='600' fill='%23fafaf9' text-anchor='middle'%3EMA%3C/text%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <!-- Apply the stored theme before first paint to avoid a flash -->
+    <script>
+        (function () {
+            var stored = localStorage.getItem('theme');
+            var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.dataset.theme = stored || (dark ? 'dark' : 'light');
+        })();
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Muhammad Adnan",
+      "alternateName": "Adnan-ZY",
+      "jobTitle": "Software Engineer",
+      "url": "https://adnan-zy.github.io/Portfolio/",
+      "email": "mailto:madnanhz42@gmail.com",
+      "address": { "@type": "PostalAddress", "addressLocality": "Lahore", "addressCountry": "PK" },
+      "sameAs": [
+        "https://github.com/Adnan-ZY",
+        "https://www.linkedin.com/in/muhammad-adnan-767776332"
+      ],
+      "knowsAbout": ["C#", ".NET", "ASP.NET MVC", "ASP.NET Core", "Web API", "Angular", "Electron.js", "SQL Server", "TypeScript"]
+    }
+    </script>
+</head>
+<body>
+    <a class="skip-link" href="#work">Skip to work</a>
+
+    <!-- ============ Header ============ -->
+    <header class="site-header">
+        <div class="wrap">
+            <a class="brand" href="#top" aria-label="Home">Adnan</a>
+
+            <nav class="nav" id="nav" aria-label="Primary">
+                <a href="#work">Work</a>
+                <a href="#experience">Experience</a>
+                <a href="#skills">Skills</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <div class="nav-tools">
+                <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch theme">
+                    <svg class="ico ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M20.5 13.2A8.4 8.4 0 0 1 10.8 3.5a8.5 8.5 0 1 0 9.7 9.7z"/>
+                    </svg>
+                    <svg class="ico ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4"/>
+                        <path d="M12 2.5v2M12 19.5v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2.5 12h2M19.5 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/>
+                    </svg>
+                </button>
+                <button class="icon-btn nav-toggle" id="nav-toggle" type="button"
+                        aria-label="Toggle menu" aria-controls="nav" aria-expanded="false">
+                    <svg class="ico ico-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+                        <path d="M4 7h16M4 12h16M4 17h16"/>
+                    </svg>
+                    <svg class="ico ico-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+                        <path d="M6 6l12 12M18 6 6 18"/>
+                    </svg>
+                </button>
             </div>
-        </nav>
+        </div>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="home" class="min-h-screen flex items-center pt-16 pb-8 md:pt-24 md:pb-16">
-            <div class="max-w-6xl mx-auto px-3 sm:px-4 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-center">
-                <div class="order-2 md:order-1 text-center md:text-left">
-                    <h2 class="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-semibold mb-3 md:mb-6 leading-tight">
-                        Hi, I'm <span class="text-primary font-bold">Adnan</span>
-                    </h2>
-                    <p class="text-2xl sm:text-3xl md:text-3xl text-gray-300 mb-3 md:mb-6 font-medium">
-                        Software Engineer
-                    </p>
-                    <p class="text-base sm:text-base md:text-lg text-gray-400 mb-4 md:mb-8 max-w-xl mx-auto md:mx-0">
-                        I'm a software engineer who enjoys building clean and efficient web apps. I specialize in .NET and Angular, turning ideas into reliable solutions.
-                    </p>
-                    <a href="#contact" class="inline-block bg-gradient-to-r from-primary to-primary-dark text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold uppercase tracking-wide shadow-lg shadow-primary/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/60 transition-all text-sm md:text-base">
-                        <span class="flex items-center gap-2">
-                            Hire Me <i class="fas fa-arrow-right"></i>
-                        </span>
-                    </a>
-                </div>
-                <div class="order-1 md:order-2 flex justify-center items-center">
-                    <img src="https://user-images.githubusercontent.com/74038190/229223263-cf2e4b07-2615-4f87-9c38-e37600f8381a.gif" alt="Developer Animation" class="w-64 sm:w-72 md:w-80 lg:w-96 max-w-md">
-                </div>
-            </div>
-        </section>
+    <main id="top">
+        <!-- ============ Hero ============ -->
+        <section class="hero">
+            <div class="wrap">
+                <div class="hero-grid">
+                    <div>
+                        <p class="hero-kicker">Open for work / Lahore, Pakistan</p>
 
-        <!-- Projects Section -->
-        <section id="projects" class="py-12 md:py-20 overflow-hidden slider-depth relative">
-            <div class="text-center mb-8 md:mb-12 px-3 sm:px-4">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-3">
-                    My <span class="text-primary font-bold">Projects</span>
-                </h2>
-                <p class="text-base sm:text-lg text-gray-500 max-w-xl mx-auto">Explore my latest work and creative solutions</p>
-            </div>
+                        <h1 class="display">
+                            Software engineer<br>
+                            building <span class="accent">reliable</span><br>
+                            web systems.
+                        </h1>
 
-            <div class="swiper projectSwiper w-full pb-12">
-                <div class="swiper-wrapper" id="project-slides">
-                    <!-- Slides loaded from CSV -->
-                </div>
-            </div>
-        </section>
+                        <p class="lead">
+                            I work across the stack on .NET and Angular applications. I design the data model,
+                            build the Web APIs behind it, and ship interfaces that hold up in production.
+                            Currently an Associate Software Engineer at Visionary Computer Solutions in Lahore.
+                        </p>
 
-        <!-- Skills Section -->
-        <section id="skills" class="py-12 md:py-20 relative overflow-hidden">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(207,63,164,0.08),transparent_50%)] pointer-events-none"></div>
-            <div class="max-w-6xl mx-auto px-3 sm:px-4 relative z-10">
-                <div class="text-center mb-8 md:mb-16">
-                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-3">
-                        My <span class="text-primary font-bold">Skills</span>
-                    </h2>
-                    <p class="text-base sm:text-lg text-gray-500 max-w-xl mx-auto">Technologies and tools I work with</p>
-                </div>
+                        <div class="hero-actions">
+                            <a class="btn btn-primary" href="#work">
+                                <span>View selected work</span>
+                                <svg class="btn-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M12 5v14"/><path d="m19 12-7 7-7-7"/>
+                                </svg>
+                            </a>
+                            <a class="btn btn-ghost" href="assets/cv.pdf" download>
+                                <svg class="btn-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <path d="M7 10l5 5 5-5"/><path d="M12 15V3"/>
+                                </svg>
+                                <span>Download resume</span>
+                            </a>
+                            <a class="btn btn-ghost" href="mailto:madnanhz42@gmail.com">
+                                <svg class="btn-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/>
+                                    <path d="m3 7 8.2 5.6a1.5 1.5 0 0 0 1.6 0L21 7"/>
+                                </svg>
+                                <span>Email me</span>
+                            </a>
+                        </div>
+                    </div>
 
-                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 md:gap-6">
-                    <!-- C# -->
-                    <div class="skill-card group bg-white/5 border border-white/10 rounded-2xl p-4 md:p-6 flex flex-col items-center justify-center gap-3 hover:bg-primary/10 hover:border-primary/50 hover:scale-105 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
-                        <i class="devicon-csharp-plain text-4xl md:text-5xl text-purple-500 group-hover:text-primary transition-colors"></i>
-                        <span class="text-xs md:text-sm font-medium text-gray-400 group-hover:text-white transition-colors">C#</span>
-                    </div>
-                    <!-- .NET -->
-                    <div class="skill-card group bg-white/5 border border-white/10 rounded-2xl p-4 md:p-6 flex flex-col items-center justify-center gap-3 hover:bg-primary/10 hover:border-primary/50 hover:scale-105 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
-                        <i class="devicon-dotnetcore-plain text-4xl md:text-5xl text-purple-600 group-hover:text-primary transition-colors"></i>
-                        <span class="text-xs md:text-sm font-medium text-gray-400 group-hover:text-white transition-colors">.NET</span>
-                    </div>
-                    <!-- SQL Server -->
-                    <div class="skill-card group bg-white/5 border border-white/10 rounded-2xl p-4 md:p-6 flex flex-col items-center justify-center gap-3 hover:bg-primary/10 hover:border-primary/50 hover:scale-105 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
-                        <i class="devicon-microsoftsqlserver-plain text-4xl md:text-5xl text-red-500 group-hover:text-primary transition-colors"></i>
-                        <span class="text-xs md:text-sm font-medium text-gray-400 group-hover:text-white transition-colors">SQL Server</span>
-                    </div>
-                    <!-- Angular -->
-                    <div class="skill-card group bg-white/5 border border-white/10 rounded-2xl p-4 md:p-6 flex flex-col items-center justify-center gap-3 hover:bg-primary/10 hover:border-primary/50 hover:scale-105 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
-                        <i class="devicon-angularjs-plain text-4xl md:text-5xl text-red-600 group-hover:text-primary transition-colors"></i>
-                        <span class="text-xs md:text-sm font-medium text-gray-400 group-hover:text-white transition-colors">Angular</span>
-                    </div>
-                    <!-- JavaScript -->
-                    <div class="skill-card group bg-white/5 border border-white/10 rounded-2xl p-4 md:p-6 flex flex-col items-center justify-center gap-3 hover:bg-primary/10 hover:border-primary/50 hover:scale-105 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
-                        <i class="devicon-javascript-plain text-4xl md:text-5xl text-yellow-400 group-hover:text-primary transition-colors"></i>
-                        <span class="text-xs md:text-sm font-medium text-gray-400 group-hover:text-white transition-colors">JavaScript</span>
-                    </div>
-                    <!-- TypeScript -->
-                    <div class="skill-card group bg-white/5 border border-white/10 rounded-2xl p-4 md:p-6 flex flex-col items-center justify-center gap-3 hover:bg-primary/10 hover:border-primary/50 hover:scale-105 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
-                        <i class="devicon-typescript-plain text-4xl md:text-5xl text-blue-500 group-hover:text-primary transition-colors"></i>
-                        <span class="text-xs md:text-sm font-medium text-gray-400 group-hover:text-white transition-colors">TypeScript</span>
-                    </div>
-                    <!-- HTML5 -->
-                    <div class="skill-card group bg-white/5 border border-white/10 rounded-2xl p-4 md:p-6 flex flex-col items-center justify-center gap-3 hover:bg-primary/10 hover:border-primary/50 hover:scale-105 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
-                        <i class="devicon-html5-plain text-4xl md:text-5xl text-orange-500 group-hover:text-primary transition-colors"></i>
-                        <span class="text-xs md:text-sm font-medium text-gray-400 group-hover:text-white transition-colors">HTML5</span>
-                    </div>
-                    <!-- CSS3 -->
-                    <div class="skill-card group bg-white/5 border border-white/10 rounded-2xl p-4 md:p-6 flex flex-col items-center justify-center gap-3 hover:bg-primary/10 hover:border-primary/50 hover:scale-105 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
-                        <i class="devicon-css3-plain text-4xl md:text-5xl text-blue-400 group-hover:text-primary transition-colors"></i>
-                        <span class="text-xs md:text-sm font-medium text-gray-400 group-hover:text-white transition-colors">CSS3</span>
-                    </div>
-                    <!-- TailwindCSS -->
-                    <div class="skill-card group bg-white/5 border border-white/10 rounded-2xl p-4 md:p-6 flex flex-col items-center justify-center gap-3 hover:bg-primary/10 hover:border-primary/50 hover:scale-105 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
-                        <i class="devicon-tailwindcss-plain text-4xl md:text-5xl text-cyan-400 group-hover:text-primary transition-colors"></i>
-                        <span class="text-xs md:text-sm font-medium text-gray-400 group-hover:text-white transition-colors">Tailwind</span>
-                    </div>
-                    <!-- Bootstrap -->
-                    <div class="skill-card group bg-white/5 border border-white/10 rounded-2xl p-4 md:p-6 flex flex-col items-center justify-center gap-3 hover:bg-primary/10 hover:border-primary/50 hover:scale-105 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
-                        <i class="devicon-bootstrap-plain text-4xl md:text-5xl text-purple-500 group-hover:text-primary transition-colors"></i>
-                        <span class="text-xs md:text-sm font-medium text-gray-400 group-hover:text-white transition-colors">Bootstrap</span>
-                    </div>
-                    <!-- Git -->
-                    <div class="skill-card group bg-white/5 border border-white/10 rounded-2xl p-4 md:p-6 flex flex-col items-center justify-center gap-3 hover:bg-primary/10 hover:border-primary/50 hover:scale-105 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
-                        <i class="devicon-git-plain text-4xl md:text-5xl text-orange-600 group-hover:text-primary transition-colors"></i>
-                        <span class="text-xs md:text-sm font-medium text-gray-400 group-hover:text-white transition-colors">Git</span>
-                    </div>
-                    <!-- VS Code -->
-                    <div class="skill-card group bg-white/5 border border-white/10 rounded-2xl p-4 md:p-6 flex flex-col items-center justify-center gap-3 hover:bg-primary/10 hover:border-primary/50 hover:scale-105 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
-                        <i class="devicon-vscode-plain text-4xl md:text-5xl text-blue-500 group-hover:text-primary transition-colors"></i>
-                        <span class="text-xs md:text-sm font-medium text-gray-400 group-hover:text-white transition-colors">VS Code</span>
-                    </div>
+                    <aside class="hero-aside">
+                        <div>
+                            <h2 class="aside-label">Stack</h2>
+                            <div class="tech-line">
+                                <span>C#</span><span>.NET</span><span>ASP.NET MVC</span><span>Web API</span>
+                                <span>Angular</span><span>TypeScript</span><span>SQL Server</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h2 class="aside-label">At a glance</h2>
+                            <dl class="fact-list">
+                                <div>
+                                    <dt>Now</dt>
+                                    <dd>Associate Software Engineer at Visionary Computer Solutions</dd>
+                                </div>
+                                <div>
+                                    <dt>Study</dt>
+                                    <dd>BS Computer Science, COMSATS · CGPA 3.49</dd>
+                                </div>
+                                <div>
+                                    <dt>Based</dt>
+                                    <dd>Lahore, Pakistan · open to remote</dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </aside>
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="py-12 md:py-20">
-            <div class="max-w-6xl mx-auto px-3 sm:px-4">
-                <div class="text-center mb-8 md:mb-16">
-                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-3">
-                        About <span class="text-primary font-bold">Me</span>
-                    </h2>
-                    <p class="text-base sm:text-lg text-gray-500 max-w-xl mx-auto">Get to know more about my skills and background</p>
+        <!-- ============ Work ============ -->
+        <section id="work" class="section-pad">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">01 / Work</span>
+                        <h2>Selected projects</h2>
+                    </div>
+                    <p id="work-count"></p>
                 </div>
 
-                <div class="grid gap-8 md:gap-12">
-                    <div class="bg-gradient-to-br from-dark-700 to-dark-600 rounded-2xl p-5 sm:p-8 shadow-xl card-bg">
-                        <!-- Intro -->
-                        <div class="mb-8">
-                            <h3 class="text-2xl font-semibold text-primary mb-4">Muhammad Adnan</h3>
-                            <p class="text-gray-400 leading-relaxed mb-4">
-                                Software Engineer with experience across .NET, Angular, and SQL Server. I build clean, scalable web applications and enjoy turning complex requirements into simple, reliable user experiences.
+                <div class="work-grid" id="work-grid">
+                    <div class="empty-state">Loading projects…</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ Experience ============ -->
+        <section id="experience" class="section-pad">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">02 / Experience</span>
+                        <h2>Where I've worked</h2>
+                    </div>
+                    <p>Three roles across frontend, systems and full-stack .NET.</p>
+                </div>
+
+                <div class="timeline">
+                    <article class="tl-item reveal">
+                        <div class="tl-when">Oct 2025 – Present · Onsite</div>
+                        <div>
+                            <h3 class="tl-role">Associate Software Engineer</h3>
+                            <div class="tl-org">Visionary Computer Solutions</div>
+                            <p class="tl-desc">
+                                Building and maintaining web applications with ASP.NET MVC, C#, Web API, Angular,
+                                jQuery and SQL Server, covering everything from the database schema and stored
+                                procedures up to the interfaces that sit on top of them.
                             </p>
-                            <div class="flex flex-wrap gap-4 text-gray-400 text-sm">
-                                <span class="flex items-center gap-2"><i class="fas fa-envelope"></i> madnanhz42@gmail.com</span>
-                                <span class="flex items-center gap-2"><i class="fas fa-phone"></i> +923217078305</span>
-                                <span class="flex items-center gap-2"><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/muhammad-adnan-767776332" target="_blank" class="text-primary hover:underline">Muhammad Adnan</a></span>
-                            </div>
                         </div>
+                    </article>
 
-                        <!-- CTA -->
-                        <div class="flex flex-wrap gap-4 mb-8">
-                            <a href="#contact" class="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-medium hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/40 transition-all">
-                                <span>Contact Me</span>
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                            <a href="assets/cv.pdf" download class="flex items-center gap-2 border border-primary text-primary px-6 py-3 rounded-full font-medium hover:bg-primary/10 hover:-translate-y-1 transition-all">
-                                <i class="fas fa-download"></i> Download CV
-                            </a>
+                    <article class="tl-item reveal">
+                        <div class="tl-when">Sep 2025 – Oct 2025 · Onsite</div>
+                        <div>
+                            <h3 class="tl-role">Junior Software Engineer</h3>
+                            <div class="tl-org">Ebryx Pvt</div>
+                            <p class="tl-desc">
+                                Systems-level work in C and C++ with CMake, focused on clean code structure
+                                and build automation.
+                            </p>
                         </div>
+                    </article>
 
-                        <!-- Details Grid -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <!-- Education -->
-                            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 about-card">
-                                <h4 class="text-lg font-semibold text-primary flex items-center gap-2 mb-4">
-                                    <i class="fas fa-user-graduate"></i> Education
-                                </h4>
-                                <div class="space-y-1">
-                                    <div class="font-semibold text-white">Comsats University Islamabad</div>
-                                    <div class="text-gray-300 text-sm">Bachelor of Science in Computer Science</div>
-                                    <div class="text-gray-500 text-sm">Sep 2021 - Jul 2025</div>
-                                    <p class="text-gray-400 text-sm mt-2">Relevant coursework: Fundamental Programming, Data Structures and Algorithms, OOP, Database. CGPA: 3.49</p>
-                                </div>
-                            </div>
-
-                            <!-- Experience -->
-                            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 about-card">
-                                <h4 class="text-lg font-semibold text-primary flex items-center gap-2 mb-4">
-                                    <i class="fas fa-briefcase"></i> Experience
-                                </h4>
-                                <div class="space-y-4">
-                                    <div>
-                                        <div class="font-semibold text-white">Elevvo Pathways - Frontend Developer Intern</div>
-                                        <div class="text-gray-500 text-sm">Remote | Jul 2025 – Aug 2025</div>
-                                        <p class="text-gray-400 text-sm mt-1">Developed and maintained responsive user interfaces using HTML, CSS, JavaScript, and React.js.</p>
-                                    </div>
-                                    <div>
-                                        <div class="font-semibold text-white">Ebryx Pvt - Junior Software Engineer</div>
-                                        <div class="text-gray-500 text-sm">Onsite | Sep 2025 – Oct 2025</div>
-                                        <p class="text-gray-400 text-sm mt-1">Worked on system-level programming using C, C++, and CMake, focusing on efficient code structure and build automation.</p>
-                                    </div>
-                                    <div>
-                                        <div class="font-semibold text-white">Visionary Computer Solutions - Associate Software Engineer</div>
-                                        <div class="text-gray-500 text-sm">Onsite | Oct 2025 – Present</div>
-                                        <p class="text-gray-400 text-sm mt-1">Developing and maintaining web applications using ASP.NET MVC, C#, Angular, jQuery, and SQL Server.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Projects --
-                            <!-- Skills -->
-                            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 md:col-span-2 lg:col-span-1 about-card">
-                                <h4 class="text-lg font-semibold text-primary flex items-center gap-2 mb-4">
-                                    <i class="fas fa-code"></i> Skills
-                                </h4>
-                                <div class="space-y-4">
-                                    <div>
-                                        <h5 class="text-sm font-medium text-white mb-2">Programming Languages</h5>
-                                        <div class="flex flex-wrap gap-2">
-                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">C#</span>
-                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">C++</span>
-                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">JavaScript</span>
-                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">SQL</span>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h5 class="text-sm font-medium text-white mb-2">Web Technologies</h5>
-                                        <div class="flex flex-wrap gap-2">
-                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">HTML5</span>
-                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">CSS3</span>
-                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">Bootstrap</span>
-                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">Tailwind CSS</span>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h5 class="text-sm font-medium text-white mb-2">Frameworks & Libraries</h5>
-                                        <div class="flex flex-wrap gap-2">
-                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">ASP.NET MVC</span>
-                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">ASP.NET Core</span>
-                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">Web API</span>
-                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">AngularJS</span>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h5 class="text-sm font-medium text-white mb-2">Database</h5>
-                                        <div class="flex flex-wrap gap-2">
-                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">MySQL</span>
-                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">SQL Server</span>
-                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">MongoDB</span>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h5 class="text-sm font-medium text-white mb-2">Tools & IDEs</h5>
-                                        <div class="flex flex-wrap gap-2">
-                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">Git</span>
-                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">Visual Studio</span>
-                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">VS Code</span>
-                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">SSMS</span>
-                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">Jira</span>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h5 class="text-sm font-medium text-white mb-2">Soft Skills</h5>
-                                        <div class="flex flex-wrap gap-2">
-                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">Communication</span>
-                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">Leadership</span>
-                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">Public Speaking</span>
-                                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm border border-primary/30">Teamwork</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Personal Attributes -->
-                            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 about-card">
-                                <h4 class="text-lg font-semibold text-primary flex items-center gap-2 mb-4">
-                                    <i class="fas fa-seedling"></i> Personal Attributes
-                                </h4>
-                                <ul class="space-y-2 text-gray-400">
-                                    <li class="flex items-start gap-2">
-                                        <span class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-                                        Adaptable and driven to learn in fast-paced environments.
-                                    </li>
-                                    <li class="flex items-start gap-2">
-                                        <span class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-                                        Embrace challenges as opportunities for growth.
-                                    </li>
-                                    <li class="flex items-start gap-2">
-                                        <span class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-                                        Continuously seek innovative ways to improve.
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <!-- Certifications -->
-                            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 about-card">
-                                <h4 class="text-lg font-semibold text-primary flex items-center gap-2 mb-4">
-                                    <i class="fas fa-certificate"></i> Certifications
-                                </h4>
-                                <ul class="space-y-2 text-gray-400">
-                                    <li class="flex items-start gap-2">
-                                        <span class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-                                        C# and .NET Basics – Frontend Masters
-                                    </li>
-                                    <li class="flex items-start gap-2">
-                                        <span class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-                                        Building APIs with C# and ASP.NET Core – Frontend Masters
-                                    </li>
-                                    <li class="flex items-start gap-2">
-                                        <span class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-                                        Mastering Chrome Developer Tools (v4) – Frontend Masters
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <!-- Links -->
-                            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 about-card">
-                                <h4 class="text-lg font-semibold text-primary flex items-center gap-2 mb-4">
-                                    <i class="fas fa-link"></i> Links
-                                </h4>
-                                <div class="flex flex-col gap-2">
-                                    <a href="#home" class="text-gray-300 hover:text-primary transition-colors font-medium">Adnan's Portfolio</a>
-                                    <a href="https://github.com/Adnan-ZY" target="_blank" rel="noopener" class="text-gray-300 hover:text-primary transition-colors font-medium">GitHub: Adnan-ZY</a>
-                                </div>
-                            </div>
+                    <article class="tl-item reveal">
+                        <div class="tl-when">Jul 2025 – Aug 2025 · Remote</div>
+                        <div>
+                            <h3 class="tl-role">Frontend Developer Intern</h3>
+                            <div class="tl-org">Elevvo Pathways</div>
+                            <p class="tl-desc">
+                                Built and maintained responsive interfaces with HTML, CSS, JavaScript and React.
+                            </p>
                         </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ Skills ============ -->
+        <section id="skills" class="section-pad">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">03 / Toolkit</span>
+                        <h2>What I work with</h2>
                     </div>
+                    <p>Day-to-day tools, not a wishlist.</p>
                 </div>
 
-                <!-- Social Connect -->
-                <div class="text-center mt-8 md:mt-12">
-                    <h3 class="text-lg sm:text-xl font-semibold text-primary mb-4 sm:mb-6">Connect With Me</h3>
-                    <div class="flex justify-center gap-4 flex-wrap">
-                        <a href="https://wa.me/923440712340" class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white text-xl hover:bg-primary hover:-translate-y-1 transition-all" aria-label="WhatsApp">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                        <a href="https://www.instagram.com/zypher_he" class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white text-xl hover:bg-primary hover:-translate-y-1 transition-all" aria-label="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/muhammad-adnan-767776332" class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white text-xl hover:bg-primary hover:-translate-y-1 transition-all" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://github.com/Adnan-ZY" class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white text-xl hover:bg-primary hover:-translate-y-1 transition-all" aria-label="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="#" class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white text-xl hover:bg-primary hover:-translate-y-1 transition-all" aria-label="Twitter">
-                            <i class="fab fa-twitter"></i>
-                        </a>
+                <div class="skill-groups reveal">
+                    <div class="skill-group">
+                        <h4>Languages</h4>
+                        <ul>
+                            <li>C#</li><li>C++</li><li>JavaScript</li><li>TypeScript</li><li>SQL</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h4>Backend &amp; APIs</h4>
+                        <ul>
+                            <li>ASP.NET MVC</li><li>ASP.NET Core</li><li>Web API</li>
+                            <li>REST</li><li>Entity Framework</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h4>Frontend</h4>
+                        <ul>
+                            <li>Angular</li><li>React</li><li>Electron.js</li><li>HTML5</li>
+                            <li>CSS3</li><li>Tailwind CSS</li><li>Bootstrap</li><li>jQuery</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h4>Data</h4>
+                        <ul>
+                            <li>SQL Server</li><li>MySQL</li><li>MongoDB</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h4>API tooling</h4>
+                        <ul>
+                            <li>Postman</li><li>Swagger / OpenAPI</li><li>SSMS</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h4>Tooling</h4>
+                        <ul>
+                            <li>Git</li><li>Visual Studio</li><li>VS Code</li><li>Jira</li><li>CMake</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="py-12 md:py-20">
-            <div class="max-w-6xl mx-auto px-3 sm:px-4">
-                <div class="text-center mb-8 md:mb-16">
-                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-3">
-                        Get In <span class="text-primary font-bold">Touch</span>
-                    </h2>
-                    <p class="text-base sm:text-lg text-gray-500 max-w-xl mx-auto">Have a project in mind or want to collaborate? Let's talk!</p>
+        <!-- ============ About ============ -->
+        <section id="about" class="section-pad">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">04 / About</span>
+                        <h2>A bit of background</h2>
+                    </div>
+                    <p>Computer Science graduate, Lahore-based, .NET-focused.</p>
                 </div>
 
-                <div class="max-w-4xl mx-auto">
-                    <!-- Contact Info -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
-                        <div class="flex flex-col items-center text-center gap-3 sm:gap-4 bg-gradient-to-br from-dark-700 to-dark-600 p-5 sm:p-8 rounded-2xl shadow-xl hover:-translate-y-1 hover:bg-primary/10 transition-all card-bg">
-                            <div class="w-12 sm:w-14 h-12 sm:h-14 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xl sm:text-2xl flex-shrink-0 hover:bg-primary hover:text-white transition-all">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-semibold text-white mb-1">Location</h3>
-                                <p class="text-gray-400">Lahore, Pakistan</p>
-                            </div>
+                <div class="about-grid">
+                    <div class="prose reveal">
+                        <p>
+                            I'm Muhammad Adnan, a software engineer based in Lahore. I graduated in Computer
+                            Science from COMSATS University Islamabad in 2025. Since then I have worked in three
+                            fairly different setups: a remote frontend internship, a systems programming role in
+                            C and C++, and now full-stack .NET work.
+                        </p>
+                        <p>
+                            That mix changed how I build things. I spend real time on the parts users never see,
+                            like the data model and the queries that run on every page load, because a clean
+                            interface is only as dependable as what sits behind it.
+                        </p>
+                        <p>
+                            At the moment I am going deeper into ASP.NET Core, Web API and Angular. I am looking
+                            for teams where I can own a feature from the first sketch to the day it ships.
+                        </p>
+                    </div>
+
+                    <div class="reveal">
+                        <div class="fact-card">
+                            <h4>Education</h4>
+                            <div class="primary">COMSATS University Islamabad</div>
+                            <div class="secondary">BS Computer Science · Sep 2021 – Jul 2025 · CGPA 3.49</div>
                         </div>
 
-                        <div class="flex flex-col items-center text-center gap-3 sm:gap-4 bg-gradient-to-br from-dark-700 to-dark-600 p-5 sm:p-8 rounded-2xl shadow-xl hover:-translate-y-1 hover:bg-primary/10 transition-all card-bg">
-                            <div class="w-12 sm:w-14 h-12 sm:h-14 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xl sm:text-2xl flex-shrink-0 hover:bg-primary hover:text-white transition-all">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-semibold text-white mb-1">Email</h3>
-                                <p class="text-gray-400">madnanhz42@gmail.com</p>
-                            </div>
+                        <div class="fact-card">
+                            <h4>Certifications</h4>
+                            <ul>
+                                <li>C# and .NET Basics, Frontend Masters</li>
+                                <li>Building APIs with C# and ASP.NET Core, Frontend Masters</li>
+                                <li>Mastering Chrome Developer Tools v4, Frontend Masters</li>
+                            </ul>
                         </div>
 
-                        <div class="flex flex-col items-center text-center gap-3 sm:gap-4 bg-gradient-to-br from-dark-700 to-dark-600 p-5 sm:p-8 rounded-2xl shadow-xl hover:-translate-y-1 hover:bg-primary/10 transition-all card-bg">
-                            <div class="w-12 sm:w-14 h-12 sm:h-14 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xl sm:text-2xl flex-shrink-0 hover:bg-primary hover:text-white transition-all">
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-semibold text-white mb-1">Phone</h3>
-                                <p class="text-gray-400">+923217078305</p>
-                            </div>
+                        <div class="fact-card">
+                            <h4>Beyond code</h4>
+                            <ul>
+                                <li>Comfortable presenting work and leading small teams</li>
+                                <li>Adaptable in fast-moving environments</li>
+                                <li>Always looking for the simpler version of a solution</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ Contact ============ -->
+        <section id="contact" class="section-pad">
+            <div class="wrap">
+                <div class="contact-panel reveal">
+                    <div>
+                        <h2>Let's build something.</h2>
+                        <p>
+                            Open to full-time roles and freelance work. Email is the fastest way to reach me
+                            and I usually reply within a day.
+                        </p>
+                        <div class="contact-list">
+                            <a href="mailto:madnanhz42@gmail.com">
+                                <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/>
+                                    <path d="m3 7 8.2 5.6a1.5 1.5 0 0 0 1.6 0L21 7"/>
+                                </svg>
+                                madnanhz42@gmail.com
+                            </a>
+                            <a href="tel:+923217078305">
+                                <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 5.5 5.5L16 12l4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3 6.2 2 2 0 0 1 5 4z"/>
+                                </svg>
+                                +92 321 7078305
+                            </a>
+                            <span>
+                                <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/>
+                                    <circle cx="12" cy="10" r="2.6"/>
+                                </svg>
+                                Lahore, Pakistan
+                            </span>
                         </div>
                     </div>
 
-                    <div class="flex gap-4 justify-center pt-4">
-                        <a href="https://wa.me/923440712340" class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white text-xl hover:bg-primary hover:-translate-y-1 transition-all" aria-label="WhatsApp">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                        <a href="https://www.instagram.com/zypher_he" class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white text-xl hover:bg-primary hover:-translate-y-1 transition-all" aria-label="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/muhammad-adnan-767776332" class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white text-xl hover:bg-primary hover:-translate-y-1 transition-all" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://github.com/Adnan-ZY" class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white text-xl hover:bg-primary hover:-translate-y-1 transition-all" aria-label="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
+                    <div class="socials">
+                        <a href="https://github.com/Adnan-ZY" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="https://www.linkedin.com/in/muhammad-adnan-767776332" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a href="https://wa.me/923440712340" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                        <a href="https://www.instagram.com/zypher_he" target="_blank" rel="noopener noreferrer">Instagram</a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-dark-800 py-8 text-center border-t border-white/10">
-        <div class="max-w-6xl mx-auto px-4">
-            <p class="text-gray-400">Designed & Built by Muhammad Adnan. © 2026 All Rights Reserved.</p>
+    <!-- ============ Footer ============ -->
+    <footer class="site-footer">
+        <div class="wrap">
+            <span>© <span id="year">2026</span> Muhammad Adnan</span>
+            <span>Built and maintained by hand · <a href="https://github.com/Adnan-ZY/Portfolio" target="_blank" rel="noopener noreferrer">Source</a></span>
         </div>
     </footer>
 
-<script src="assets/js/script.js"></script>
+    <!-- ============ Project modal ============ -->
+    <div class="modal" id="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+        <button class="modal-backdrop" id="modal-backdrop" type="button" aria-label="Close project details"></button>
+
+        <div class="modal-panel">
+            <button class="modal-close" id="modal-close" type="button" aria-label="Close">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                    <path d="M6 6l12 12M18 6 6 18"/>
+                </svg>
+            </button>
+
+            <div class="gallery" id="gallery">
+                <img id="gallery-img" src="" alt="">
+                <button class="gallery-nav prev" id="gallery-prev" type="button" aria-label="Previous screenshot">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="m14.5 5-7 7 7 7"/>
+                    </svg>
+                </button>
+                <button class="gallery-nav next" id="gallery-next" type="button" aria-label="Next screenshot">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="m9.5 5 7 7-7 7"/>
+                    </svg>
+                </button>
+                <div class="gallery-dots" id="gallery-dots"></div>
+            </div>
+
+            <div class="modal-body">
+                <div class="modal-head">
+                    <div>
+                        <h3 id="modal-title"></h3>
+                        <div class="tagline" id="modal-tagline"></div>
+                    </div>
+                    <div class="modal-meta" id="modal-meta"></div>
+                </div>
+
+                <p class="body-text" id="modal-description"></p>
+
+                <ul class="highlight-list" id="modal-highlights"></ul>
+
+                <div class="modal-foot" id="modal-foot">
+                    <a class="btn btn-primary" id="modal-live" href="#" target="_blank" rel="noopener noreferrer">
+                        <span>Visit live site</span>
+                        <svg class="btn-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M7 17 17 7"/><path d="M8.5 7H17v8.5"/>
+                        </svg>
+                    </a>
+                    <a class="btn btn-ghost" id="modal-repo" href="#" target="_blank" rel="noopener noreferrer">
+                        <span>View code</span>
+                        <svg class="btn-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M7 17 17 7"/><path d="M8.5 7H17v8.5"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js" defer></script>
 </body>
 </html>

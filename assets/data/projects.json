@@ -1,0 +1,110 @@
+{
+  "projects": [
+    {
+      "id": "black-friday-the-vault",
+      "title": "Black Friday — The Vault",
+      "tagline": "A cinematic Black Friday landing page built to make a 24-hour sale feel like an exclusive event, not a discount banner.",
+      "description": "Most Black Friday pages look the same: red banners, countdown timers, percentage badges shouting over each other. The result is that a sale meant to feel exciting instead feels cheap, and the brand loses whatever premium positioning it spent the year building.\n\nThis project takes the opposite approach. The event is framed as entry into a private vault — a black, restrained interface where the discount is present but never the loudest thing on screen. A cinematic preloader sets the tone before the page is even visible, motion carries the user from section to section, and a glassmorphic membership pass sits in the hero as the visual hook instead of a product grid.\n\nThe result is a sale page that reads as a launch. Every interaction is deliberate, text reveals in staggered lines, the collections gallery scrolls horizontally as you move down the page, buttons pull toward the cursor, and the whole thing holds together on mobile, where the custom cursor gracefully steps aside for a full-screen menu and touch-friendly layout.",
+      "role": "",
+      "status": "live",
+      "featured": false,
+      "highlights": [
+        "Cinematic preloader with real progress tracking before first paint",
+        "Custom cursor with contextual VIEW and DRAG states, disabled on touch",
+        "Horizontally pinned collections gallery driven by vertical scroll",
+        "Magnetic buttons with elastic return easing",
+        "Glassmorphic vault pass with 3D tilt, shimmer, and text-scramble code",
+        "Fully responsive with a dedicated mobile navigation overlay"
+      ],
+      "images": [
+        "assets/images/black firday 1 .png"
+      ],
+      "live": "https://adnan-zy.github.io/BlackFriday-Frontend/",
+      "repo": "https://github.com/Adnan-ZY/BlackFriday-Frontend"
+    },
+    {
+      "id": "farm-to-home",
+      "title": "Farm to Home",
+      "tagline": "Fresh produce ordered straight from the farm",
+      "description": "An online ordering platform that connects local farms directly with households, cutting out the middle layer that pushes prices up and slows delivery down.\n\nCustomers browse what is in season, order in a few taps, and follow the delivery through to the door. Farm owners get a simple place to manage stock, pricing and incoming orders without needing any technical background.\n\nThe interface was kept deliberately plain so that first-time users could complete an order without instructions.",
+      "role": "Design and development",
+      "status": "live",
+      "featured": true,
+      "highlights": [
+        "Fresh Procedure",
+        "FYP Project."
+      ],
+      "images": [
+        "assets/images/farmtohome.png",
+        "assets/images/farmtohome1.png",
+        "assets/images/farmtohome2.png",
+        "assets/images/farmtohome3.png"
+      ],
+      "live": "",
+      "repo": ""
+    },
+    {
+      "id": "lamps-selling-website",
+      "title": "Lamps Selling Website ",
+      "tagline": "Full-stack lamps e-commerce built on React, Node.js, and MongoDB, with a custom admin panel for products, orders, and inventory.",
+      "description": "Semester Project, Specially build for Design and component based approach. ",
+      "role": "Design and development",
+      "status": "live",
+      "featured": false,
+      "highlights": [
+        "Design",
+        "Component Based",
+        "Complete Node Js."
+      ],
+      "images": [
+        "assets/images/Lampweb1.png",
+        "assets/images/Lampweb2.png",
+        "assets/images/Lampweb4.png",
+        "assets/images/Lampweb3.png",
+        "assets/images/Lampweb.png"
+      ],
+      "live": "",
+      "repo": "https://github.com/Adnan-ZY/lamp-store"
+    },
+    {
+      "id": "aircond-service-website",
+      "title": "Aircond Service Website",
+      "tagline": "Aircon services website for a Malaysian HVAC company, live in production, built mobile-first with fast enquiry-to-booking flow.",
+      "description": "A production website for an air-conditioning services company operating in Malaysia, covering installation, servicing, chemical wash, and repair. The design puts the enquiry front and centre, service pages, coverage areas, and pricing are reachable in a tap, with WhatsApp and call-to-action buttons persistent on mobile, where most local customers arrive from.",
+      "role": "Development",
+      "status": "live",
+      "featured": false,
+      "highlights": [
+        "Currently Running in Malaysia."
+      ],
+      "images": [
+        "assets/images/Norizan.png",
+        "assets/images/Norizan1.png"
+      ],
+      "live": "https://www.norizanaircondservices.com/",
+      "repo": ""
+    },
+    {
+      "id": "therapy-space",
+      "title": "Therapy Space ",
+      "tagline": "Modern Therapy Website Design",
+      "description": " A calm, modern site for a therapy practice, built on the latest Tailwind CSS with a fully mobile-responsive layout.",
+      "role": "Design",
+      "status": "live",
+      "featured": false,
+      "highlights": [
+        "Mobile Responsive",
+        "Modern Design",
+        "Minimal Website"
+      ],
+      "images": [
+        "assets/images/slides (1).png",
+        "assets/images/slides (1)1.png",
+        "assets/images/slides (2).png",
+        "assets/images/slides (3).png"
+      ],
+      "live": "https://adnan-zy.github.io/therapy-space/",
+      "repo": "https://github.com/Adnan-ZY/therapy-space"
+    }
+  ]
+}

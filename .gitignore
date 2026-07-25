@@ -1,0 +1,17 @@
+# The project dashboard and its local server are development tools.
+# They are deliberately NOT committed, so they never reach the published
+# site and nobody else can open them.
+#
+# Keep local backups of these if you care about them: a fresh clone or a
+# `git clean -fdx` will not bring them back.
+admin.html
+assets/css/admin.css
+assets/js/admin.js
+tools/
+
+# OS and editor noise
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+node_modules/
