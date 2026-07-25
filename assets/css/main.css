@@ -327,6 +327,9 @@ html:not([data-theme="dark"]) .ico-sun { display: none; }
   padding-top: calc(var(--nav-h) + clamp(3.5rem, 9vw, 7rem));
   padding-bottom: clamp(3rem, 7vw, 5.5rem);
 }
+@media (max-width: 640px) {
+  .hero { padding-top: calc(var(--nav-h) + 1.5rem); }
+}
 
 .hero-grid {
   display: grid;
