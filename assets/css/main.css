@@ -820,7 +820,7 @@ html:not([data-theme="dark"]) .ico-sun { display: none; }
   margin-bottom: 0.9rem;
   border-bottom: 1px solid var(--border);
 }
-.skill-group ul { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.skill-group ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .skill-group li {
   font-size: 0.83rem;
   color: var(--text-soft);
@@ -862,7 +862,7 @@ html:not([data-theme="dark"]) .ico-sun { display: none; }
 }
 .fact-card .primary { font-weight: 600; font-size: 0.95rem; letter-spacing: -0.01em; }
 .fact-card .secondary { color: var(--text-muted); font-size: 0.85rem; margin-top: 0.2rem; }
-.fact-card ul { display: grid; gap: 0.55rem; }
+.fact-card ul { list-style: none; padding: 0; display: grid; gap: 0.55rem; }
 .fact-card ul li {
   font-size: 0.875rem;
   color: var(--text-soft);
